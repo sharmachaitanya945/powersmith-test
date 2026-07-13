@@ -1,0 +1,13 @@
+# Dependencies & build output
+node_modules
+dist
+
+# Env
+.env
+.env.local
+
+# Internal business documents — kept out of the public repo
+Powersmith_Solar_SEO_Audit_May2026*.pdf
+PowerSmith-Website-Roadmap.csv
+PowerSmith-New-Website-Requirements.csv
+CLIENT-QUESTIONS.md
