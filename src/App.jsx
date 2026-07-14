@@ -16,7 +16,14 @@ import { localBusinessSchema } from './content/site'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
-  useEffect(() => window.scrollTo(0, 0), [pathname])
+  useEffect(() => {
+    // Must use a block body: a concise arrow would return scrollTo's value,
+    // which React would then try to call as a cleanup function on the next
+    // route change, crashing the app.
+    // 'instant' overrides the global `scroll-behavior: smooth` so route
+    // changes jump to the top instead of animating up the old page.
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+  }, [pathname])
   return null
 }
 
