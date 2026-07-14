@@ -19,8 +19,8 @@ export default function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
       <div
-        className={`mx-auto flex max-w-wrap items-center justify-between gap-6 rounded-full border border-white/10 bg-navy/95 px-5 py-3 backdrop-blur transition-shadow duration-300 sm:px-7 ${
-          scrolled ? 'shadow-2xl shadow-navy/30' : 'shadow-lg shadow-navy/20'
+        className={`mx-auto flex max-w-wrap items-center justify-between gap-6 rounded-full border border-white/20 bg-navy px-5 py-3 ring-1 ring-black/5 transition-shadow duration-300 sm:px-7 ${
+          scrolled ? 'shadow-2xl shadow-black/50' : 'shadow-xl shadow-black/40'
         }`}
       >
         {/* Brand guideline: keep clear space around the logo so it can breathe */}

@@ -8,7 +8,7 @@ export default function Footer() {
     <footer className="border-t border-white/10 bg-panel">
       <div className="mx-auto grid max-w-wrap gap-10 px-5 py-14 md:grid-cols-4">
         <div>
-          <img src={logo} alt="PowerSmith Energy — Veteran Owned" className="h-14 w-auto" />
+          <img src={logo} alt="PowerSmith Energy — Veteran Owned" className="h-10 w-auto" />
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/50">
             Premier solar: complete solutions for panels, EV chargers &amp; batteries. Clean,
             reliable energy — affordably.
