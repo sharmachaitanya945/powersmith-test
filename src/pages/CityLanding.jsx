@@ -41,21 +41,21 @@ export default function CityLanding() {
       />
 
       {/* Keyword-rich H1 targeting "[city] solar" intent */}
-      <section className="border-b border-white/10 bg-panel pb-16 pt-36 text-center">
+      <section className="border-b border-navy/10 bg-gradient-to-b from-sky-soft to-white pb-16 pt-36 text-center">
         <div className="mx-auto max-w-3xl px-5">
-          <nav className="mb-5 text-xs text-white/40">
-            <Link to="/" className="hover:text-white">
+          <nav className="mb-5 text-xs text-ink/50">
+            <Link to="/" className="hover:text-accent">
               Home
             </Link>{' '}
-            / <span className="text-white/60">{data.name}</span>
+            / <span className="text-ink/70">{data.name}</span>
           </nav>
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
             {data.name} <span className="text-accent">Solar Company</span>
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-white/60">{data.intro}</p>
+          <p className="mx-auto mt-4 max-w-2xl text-ink/70">{data.intro}</p>
           <Link
             to="/contact"
-            className="mt-8 inline-block rounded-full bg-accent px-9 py-3.5 font-semibold text-night transition hover:bg-accent-dim"
+            className="btn-primary mt-8 px-9 py-3.5"
           >
             Get a Free {data.name} Solar Quote
           </Link>
@@ -71,7 +71,7 @@ export default function CityLanding() {
             </h2>
             <ul className="mt-6 space-y-4">
               {data.highlights.map((h) => (
-                <li key={h} className="flex items-start gap-3 text-white/70">
+                <li key={h} className="flex items-start gap-3 text-ink/75">
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
@@ -87,16 +87,16 @@ export default function CityLanding() {
             </ul>
           </Reveal>
           <Reveal delay={150}>
-            <div className="rounded-3xl border border-white/10 bg-panel p-8">
+            <div className="rounded-3xl border border-sky/20 bg-sky-soft p-8">
               <h3 className="text-sm font-bold uppercase tracking-widest text-accent">
                 {data.utility} &amp; local incentives
               </h3>
-              <p className="mt-4 leading-relaxed text-white/70">{data.rate}</p>
-              <p className="mt-4 leading-relaxed text-white/70">
+              <p className="mt-4 leading-relaxed text-ink/75">{data.rate}</p>
+              <p className="mt-4 leading-relaxed text-ink/75">
                 We handle {data.utility} interconnection, all permits and inspections, and help you
                 claim the 30% federal tax credit — start to finish, right here in {data.name}.
               </p>
-              <p className="mt-6 text-sm text-white/40">
+              <p className="mt-6 text-sm text-ink/50">
                 Serving {data.name} from {company.address}
               </p>
             </div>
@@ -112,7 +112,7 @@ export default function CityLanding() {
       {/* Internal linking to nearby cities (audit weakness: weak internal links) */}
       <section className="border-t border-white/10 bg-panel py-14">
         <div className="mx-auto max-w-wrap px-5 text-center">
-          <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">
+          <h2 className="text-sm font-bold uppercase tracking-widest text-white/50">
             We also serve nearby cities
           </h2>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
@@ -122,7 +122,7 @@ export default function CityLanding() {
                 <Link
                   key={c.slug}
                   to={`/solar/${c.slug}`}
-                  className="rounded-full border border-white/15 px-5 py-2 text-sm text-white/70 transition hover:border-accent/50 hover:text-white"
+                  className="rounded-full border border-white/20 px-5 py-2 text-sm text-white/75 transition hover:border-accent/50 hover:text-white"
                 >
                   {c.name} Solar
                 </Link>

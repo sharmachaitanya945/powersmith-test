@@ -14,13 +14,13 @@ export default function VideoSection() {
         <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
           See how <span className="text-accent">solar works</span>
         </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-white/60">
+        <p className="mx-auto mt-4 max-w-2xl text-ink/70">
           A quick overview of going solar with PowerSmith — from your first bill to power-on.
         </p>
       </Reveal>
 
       <Reveal delay={150} className="mt-10">
-        <div className="relative mx-auto aspect-video max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-panel shadow-2xl">
+        <div className="relative mx-auto aspect-video max-w-4xl overflow-hidden rounded-2xl border border-navy/10 bg-mist shadow-xl shadow-navy/10">
           {play ? (
             <iframe
               className="h-full w-full"
@@ -41,7 +41,7 @@ export default function VideoSection() {
                 className="h-full w-full object-cover"
               />
               <span className="absolute inset-0 flex items-center justify-center bg-black/30 transition group-hover:bg-black/15">
-                <span className="flex h-20 w-20 items-center justify-center rounded-full bg-accent text-night shadow-lg transition group-hover:scale-110">
+                <span className="flex h-20 w-20 items-center justify-center rounded-full bg-accent text-white shadow-lg transition group-hover:scale-110">
                   <svg viewBox="0 0 24 24" fill="currentColor" className="h-9 w-9 translate-x-0.5">
                     <path d="M8 5v14l11-7z" />
                   </svg>

@@ -2,6 +2,15 @@
 node_modules
 dist
 
+# Raw drone originals (~20GB of 4K photos/video + zips).
+# Only the compressed web versions in public/dji + public/hero-video.mp4 ship.
+# Leading slash anchors this to the repo root — without it, git's
+# case-insensitive matching on Windows also excludes public/dji/.
+/DJI/
+
+# Unreviewed asset — not referenced by the site
+public/cas-request-qr.png
+
 # Env
 .env
 .env.local

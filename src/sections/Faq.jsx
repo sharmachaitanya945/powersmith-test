@@ -10,7 +10,7 @@ function FaqItem({ q, a, open, onToggle }) {
         className="flex w-full items-center justify-between gap-4 py-5 text-left"
         aria-expanded={open}
       >
-        <span className="font-medium sm:text-lg">{q}</span>
+        <span className="font-medium text-white sm:text-lg">{q}</span>
         <svg
           viewBox="0 0 24 24"
           fill="none"
@@ -39,7 +39,7 @@ export default function Faq() {
     <section id="faq" className="border-y border-white/10 bg-panel py-24">
       <div className="mx-auto max-w-3xl px-5">
         <Reveal className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">
             Common <span className="text-accent">questions</span>
           </h2>
         </Reveal>

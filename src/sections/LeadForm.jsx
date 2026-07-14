@@ -3,7 +3,7 @@ import { company } from '../content/site'
 import Reveal from '../components/Reveal'
 
 const inputClass =
-  'w-full rounded-xl border border-white/15 bg-night px-4 py-3 text-white placeholder-white/30 outline-none transition focus:border-accent'
+  'w-full rounded-xl border border-navy/15 bg-mist-50 px-4 py-3 text-ink placeholder-ink/40 outline-none transition focus:border-accent focus:bg-white'
 
 // Two-step lead form. Posts to a GoHighLevel webhook when
 // VITE_GHL_WEBHOOK_URL is set; otherwise shows the success state (demo mode).
@@ -40,10 +40,10 @@ export default function LeadForm() {
 
   return (
     <section id="quote" className="relative overflow-hidden py-24">
-      <div className="absolute inset-0 bg-gradient-to-b from-night via-accent/5 to-night" />
+      <div className="absolute inset-0 bg-gradient-to-b from-navy via-navy-700 to-navy" />
       <div className="relative mx-auto max-w-xl px-5">
         <Reveal className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">
             See if your home <span className="text-accent">qualifies</span>
           </h2>
           <p className="mt-4 text-white/60">
@@ -52,7 +52,7 @@ export default function LeadForm() {
         </Reveal>
 
         <Reveal delay={150} className="mt-10">
-          <div className="rounded-3xl border border-white/10 bg-panel p-8 sm:p-10">
+          <div className="rounded-3xl border border-navy/10 bg-white p-8 shadow-xl shadow-navy/10 sm:p-10">
             {status === 'done' ? (
               <div className="py-8 text-center">
                 <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-accent/15">
@@ -67,15 +67,15 @@ export default function LeadForm() {
                   </svg>
                 </div>
                 <h3 className="mt-6 text-2xl font-semibold">You&apos;re all set!</h3>
-                <p className="mt-2 text-white/60">
+                <p className="mt-2 text-ink/70">
                   A PowerSmith consultant will reach out within one business day.
                 </p>
               </div>
             ) : (
               <form onSubmit={submit}>
-                <div className="mb-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/40">
+                <div className="mb-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-ink/45">
                   <span className={step === 1 ? 'text-accent' : ''}>1. Contact</span>
-                  <span className="h-px flex-1 bg-white/10" />
+                  <span className="h-px flex-1 bg-navy/10" />
                   <span className={step === 2 ? 'text-accent' : ''}>2. Your Home</span>
                 </div>
 
@@ -109,7 +109,7 @@ export default function LeadForm() {
                       onClick={() => {
                         if (form.name && form.phone && form.email) setStep(2)
                       }}
-                      className="w-full rounded-full bg-accent py-3.5 font-semibold text-night transition hover:bg-accent-dim"
+                      className="btn-primary w-full py-3.5"
                     >
                       Continue →
                     </button>
@@ -135,19 +135,19 @@ export default function LeadForm() {
                     <button
                       type="submit"
                       disabled={status === 'sending'}
-                      className="w-full rounded-full bg-accent py-3.5 font-semibold text-night transition hover:bg-accent-dim disabled:opacity-50"
+                      className="btn-primary w-full py-3.5 disabled:opacity-50"
                     >
                       {status === 'sending' ? 'Sending…' : 'Get My Free Quote'}
                     </button>
                     <button
                       type="button"
                       onClick={() => setStep(1)}
-                      className="w-full text-sm text-white/40 hover:text-white/70"
+                      className="w-full text-sm text-ink/45 hover:text-ink/70"
                     >
                       ← Back
                     </button>
                     {status === 'error' && (
-                      <p className="text-center text-sm text-red-400">
+                      <p className="text-center text-sm text-red-500">
                         Something went wrong. Please call us at {company.phone}.
                       </p>
                     )}
@@ -156,7 +156,7 @@ export default function LeadForm() {
               </form>
             )}
           </div>
-          <p className="mt-6 text-center text-sm text-white/40">
+          <p className="mt-6 text-center text-sm text-white/50">
             Prefer to talk?{' '}
             <a href={company.phoneHref} className="text-accent hover:underline">
               Call {company.phone}

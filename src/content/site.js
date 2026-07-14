@@ -37,13 +37,19 @@ import indChurches from '../assets/ind-churches.png'
 
 export { logo, usaMap, imgHomeEnergy, imgMegapack, imgSolarCell }
 
-// Client-supplied images placed in /public (served from the site root).
-// Several show black solar panels on California-style homes (boss's request).
+// Images served from /public.
+// The `dji-*` files are PowerSmith's OWN drone photos of real California
+// installs (compressed from the DJI originals) — always prefer these over stock.
 export const pub = {
-  heroHome: '/shutterstock_282846836-1024x683.webp', // black panels, CA home, blue sky
-  blackPanelHome: '/Capture-min.webp', // black panels on white suburban home
-  panelInstall: '/XXL_height-2.webp', // installers fitting a black panel
-  panelSunset: '/21279-min-1024x768.webp', // black panel array at sunset
+  heroHome: '/dji/dji-hero.webp', // black panels, CA home, sunny aerial
+  blackPanelHome: '/dji/dji-residential.webp', // tile roof + black panels
+  golfCourse: '/dji/dji-golf-course.webp', // hillside home by the golf course
+  neighborhood: '/dji/dji-neighborhood.webp', // CA neighbourhood aerial
+  poolHome: '/dji/dji-pool-home.webp', // top-down, panels + pool
+  estate: '/dji/dji-estate.webp', // large tile-roof home, palms
+  aerial1: '/dji/dji-aerial-1.webp', // top-down aerial
+  aerial2: '/dji/dji-aerial-2.webp', // top-down aerial, pools
+  // Equipment / product shots
   teslaBattery: '/Tesla-Solar-Battery-1024x1024-1.webp', // real Tesla Powerwalls
   teslaCharging: '/tesla_100622512_h-1024x587.webp', // Tesla EV charging
 }
@@ -134,15 +140,89 @@ export const services = [
   {
     title: 'Backup Generators',
     blurb: 'Whole-home backup for total peace of mind, seamlessly integrated with your solar system.',
-    image: pub.panelInstall,
+    image: pub.estate,
     to: '/contact',
   },
   {
     title: 'System Upgrades',
     blurb:
       'Already have solar? Add panels without losing NEM 1.0/2.0 status, expand storage, or upgrade your electric panel.',
-    image: imgSolarUpgrades,
+    image: pub.aerial1,
     to: '/contact',
+  },
+]
+
+// Residential-only offering (no commercial card) — used on /residential
+export const residentialServices = [
+  {
+    title: 'Solar Panels',
+    blurb:
+      'All-black, high-performance panels custom-designed for your roof — most homes installed in a single day, contract to power-on in under 30 days on average.',
+    image: pub.heroHome,
+    to: '/contact',
+  },
+  {
+    title: 'Battery Storage',
+    blurb:
+      'Tesla Powerwall 2, Enphase, Franklin, SolArc and SolarEdge. Store your own sunshine, beat Time-of-Use rates and keep the lights on in an outage.',
+    image: pub.teslaBattery,
+    to: '/batteries',
+  },
+  {
+    title: 'EV Charging',
+    blurb:
+      'Charge at home on the power your roof made — cheaper and cleaner than the pump, and ready for your next EV.',
+    image: pub.teslaCharging,
+    to: '/contact',
+  },
+  {
+    title: 'Backup Generators',
+    blurb:
+      'Whole-home backup for total peace of mind through wildfire-season outages, seamlessly integrated with your solar system.',
+    image: pub.estate,
+    to: '/contact',
+  },
+  {
+    title: 'System Upgrades',
+    blurb:
+      'Already have solar? Add panels without losing your NEM 1.0 or 2.0 status, expand storage, or modernise ageing equipment.',
+    image: pub.aerial1,
+    to: '/contact',
+  },
+  {
+    title: 'Electric Panel Upgrades',
+    blurb:
+      'Older main panel? We upgrade your service so it can safely carry solar, a battery and an EV charger for years to come.',
+    image: pub.neighborhood,
+    to: '/contact',
+  },
+]
+
+// Why homeowners pick PowerSmith — /residential
+export const residentialWhy = [
+  {
+    title: 'Veteran-Owned & Local',
+    text: 'A San Diego team that knows SDG&E interconnection, local permitting and California code inside out.',
+  },
+  {
+    title: '30-Year Monitoring Warranty',
+    text: 'The longest, broadest insurance-backed coverage available — panels, inverters, optimizers and racking.',
+  },
+  {
+    title: '10-Year Roof Warranty',
+    text: 'Every roof penetration is covered for a full decade after installation, including any damage to your home.',
+  },
+  {
+    title: '60-Day Install Guarantee',
+    text: 'For qualifying projects we commit to installing within 60 days of final design approval.',
+  },
+  {
+    title: '$0-Down Options',
+    text: 'Lease, loan or purchase — we match you with the right financing from trusted national partners.',
+  },
+  {
+    title: 'We Handle the Paperwork',
+    text: 'Permits, utility forms, HOA approvals and your 30% federal tax credit guidance — all done for you.',
   },
 ]
 
@@ -283,6 +363,27 @@ export const plans = [
 export const commercial = {
   intro:
     'Recognized as a leader in Southern California for innovative renewable energy solutions — commercial-scale solar systems, EV charging stations and energy storage.',
+  // TODO: swap for a PowerSmith drone photo of a commercial site once available.
+  heroImage: imgBmwCarport,
+  // Why businesses go solar with us
+  benefits: [
+    {
+      title: 'Cut Operating Costs',
+      text: 'Turn one of your largest fixed expenses into a predictable, controlled cost — or eliminate it entirely.',
+    },
+    {
+      title: 'ITC + Depreciation',
+      text: 'Stack the 30% federal Investment Tax Credit with 100% year-1 bonus depreciation. Sample projects have seen incentives cover over 90% of cost.',
+    },
+    {
+      title: 'Energy Resilience',
+      text: 'Commercial storage keeps critical operations running through outages and shaves expensive demand charges.',
+    },
+    {
+      title: 'Sustainability Goals',
+      text: 'Meet ESG targets and show customers a real commitment to clean energy — backed by measurable production data.',
+    },
+  ],
   financing: [
     'Nothing upfront — start saving from day 1',
     '$0 down financing options',

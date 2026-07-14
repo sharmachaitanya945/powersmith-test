@@ -8,7 +8,7 @@ export default function HowItWorks() {
         <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
           Your solar journey in <span className="text-accent">six steps</span>
         </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-white/60">
+        <p className="mx-auto mt-4 max-w-2xl text-ink/70">
           We handle everything — you just flip the switch.
         </p>
       </Reveal>
@@ -21,7 +21,7 @@ export default function HowItWorks() {
                 {i + 1}
               </div>
               <h3 className="text-lg font-semibold">{step.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/55">{step.text}</p>
+              <p className="mt-2 text-sm leading-relaxed text-ink/65">{step.text}</p>
             </div>
           </Reveal>
         ))}

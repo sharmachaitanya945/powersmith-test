@@ -18,7 +18,7 @@ export default function Testimonials() {
     <section className="border-y border-white/10 bg-panel py-24">
       <div className="mx-auto max-w-wrap px-5">
         <Reveal className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">
             Their words <span className="text-accent">speak better</span>
           </h2>
 
@@ -38,7 +38,7 @@ export default function Testimonials() {
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           {testimonials.map((t, i) => (
             <Reveal key={i} delay={i * 120}>
-              <figure className="flex h-full flex-col rounded-2xl border border-white/10 bg-white p-8 text-night">
+              <figure className="flex h-full flex-col rounded-2xl border border-white/10 bg-white p-8 text-night shadow-xl shadow-navy/20">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/15 font-bold text-accent">

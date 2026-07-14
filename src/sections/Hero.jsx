@@ -27,12 +27,12 @@ export default function Hero() {
         />
       )}
 
-      {/* Legibility overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-night/75 via-night/40 to-night" />
+      {/* Legibility overlay — navy scrim that carries into the navy stats band below */}
+      <div className="absolute inset-0 bg-gradient-to-b from-navy/85 via-navy/40 to-navy/95" />
 
       <div className="relative z-10 mx-auto max-w-4xl px-5 text-center">
         <VeteranBadge />
-        <h1 className="mt-7 text-5xl font-bold leading-[1.02] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
+        <h1 className="mt-7 text-5xl font-bold leading-[1.02] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
           Power Your Home.
           <br />
           <span className="text-accent">Own Your Energy.</span>
@@ -43,7 +43,7 @@ export default function Hero() {
         <div className="mt-11 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link
             to="/contact"
-            className="w-full min-w-[15rem] rounded-full bg-accent px-10 py-4 font-semibold text-night transition hover:bg-accent-dim sm:w-auto"
+            className="btn-primary w-full min-w-[15rem] px-10 py-4 sm:w-auto"
           >
             Get a Free Quote
           </Link>

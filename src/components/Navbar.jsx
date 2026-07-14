@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { company, nav, logo } from '../content/site'
 
+// Floating "pill" navbar (Daylight-style): a rounded, centered navy bar that
+// hovers over the page. Navy keeps the white PowerSmith logo crisp on the new
+// light theme, while the gradient-orange CTA gives it the Daylight pop.
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
@@ -14,61 +17,59 @@ export default function Navbar() {
   }, [])
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled || open ? 'bg-night/95 backdrop-blur border-b border-white/10' : 'bg-transparent'
-      }`}
-    >
-      <div className="mx-auto flex h-20 max-w-wrap items-center justify-between px-5">
-        <Link to="/" onClick={() => setOpen(false)}>
-          <img
-            src={logo}
-            alt="PowerSmith Energy — Veteran Owned"
-            className="h-12 w-auto sm:h-14"
-          />
+    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
+      <div
+        className={`mx-auto flex max-w-wrap items-center justify-between gap-6 rounded-full border border-white/10 bg-navy/95 px-5 py-3 backdrop-blur transition-shadow duration-300 sm:px-7 ${
+          scrolled ? 'shadow-2xl shadow-navy/30' : 'shadow-lg shadow-navy/20'
+        }`}
+      >
+        {/* Brand guideline: keep clear space around the logo so it can breathe */}
+        <Link to="/" onClick={() => setOpen(false)} className="shrink-0 pr-2 sm:pr-4">
+          <img src={logo} alt="PowerSmith Energy — Veteran Owned" className="h-9 w-auto sm:h-10" />
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex">
+        <nav className="mx-auto hidden items-center gap-6 lg:flex">
           {nav.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
-                `text-sm transition-colors ${
-                  isActive ? 'text-white' : 'text-white/60 hover:text-white'
+                `text-sm font-medium transition-colors ${
+                  isActive ? 'text-white' : 'text-white/65 hover:text-white'
                 }`
               }
             >
               {item.label}
             </NavLink>
           ))}
-          <Link
-            to="/contact"
-            className="rounded-full bg-accent px-5 py-2 text-sm font-semibold text-night transition hover:bg-accent-dim"
-          >
-            Get a Quote
-          </Link>
         </nav>
 
-        <button
-          className="flex flex-col gap-1.5 p-2 md:hidden"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-        >
-          <span className={`h-0.5 w-6 bg-white transition ${open ? 'translate-y-2 rotate-45' : ''}`} />
-          <span className={`h-0.5 w-6 bg-white transition ${open ? 'opacity-0' : ''}`} />
-          <span className={`h-0.5 w-6 bg-white transition ${open ? '-translate-y-2 -rotate-45' : ''}`} />
-        </button>
+        <div className="flex shrink-0 items-center gap-2">
+          <Link to="/contact" className="btn-primary hidden px-5 py-2 text-sm sm:inline-flex">
+            Get a Quote
+          </Link>
+
+          <button
+            className="flex flex-col gap-1.5 p-2 lg:hidden"
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
+            aria-expanded={open}
+          >
+            <span className={`h-0.5 w-6 bg-white transition ${open ? 'translate-y-2 rotate-45' : ''}`} />
+            <span className={`h-0.5 w-6 bg-white transition ${open ? 'opacity-0' : ''}`} />
+            <span className={`h-0.5 w-6 bg-white transition ${open ? '-translate-y-2 -rotate-45' : ''}`} />
+          </button>
+        </div>
       </div>
 
       {open && (
-        <nav className="border-t border-white/10 bg-night/95 px-5 pb-6 pt-2 backdrop-blur md:hidden">
+        <nav className="mx-auto mt-2 max-w-wrap rounded-3xl border border-white/10 bg-navy/95 px-5 pb-6 pt-3 shadow-2xl shadow-navy/30 backdrop-blur lg:hidden">
           {nav.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
               onClick={() => setOpen(false)}
-              className="block py-3 text-base text-white/80 hover:text-white"
+              className="block border-b border-white/5 py-3 text-base text-white/80 last:border-0 hover:text-white"
             >
               {item.label}
             </NavLink>
@@ -76,7 +77,7 @@ export default function Navbar() {
           <Link
             to="/contact"
             onClick={() => setOpen(false)}
-            className="mt-3 block rounded-full bg-accent px-5 py-3 text-center font-semibold text-night"
+            className="btn-primary mt-4 w-full py-3"
           >
             Get a Quote
           </Link>

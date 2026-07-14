@@ -13,6 +13,8 @@ export default function Commercial() {
         title="Commercial"
         highlight="solar"
         subtitle={commercial.intro}
+        image={commercial.heroImage}
+        imageAlt="PowerSmith commercial solar carport installation"
       />
 
       {/* Financing highlights — real messaging from the live site */}
@@ -30,10 +32,31 @@ export default function Commercial() {
                 >
                   <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <span className="text-sm font-medium text-white/80">{f}</span>
+                <span className="text-sm font-medium text-ink/80">{f}</span>
               </div>
             </Reveal>
           ))}
+        </div>
+      </section>
+
+      {/* Why businesses go solar */}
+      <section className="bg-mist py-24">
+        <div className="mx-auto max-w-wrap px-5">
+          <Reveal className="text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
+              Why businesses go <span className="text-accent">solar</span>
+            </h2>
+          </Reveal>
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {commercial.benefits.map((b, i) => (
+              <Reveal key={b.title} delay={(i % 4) * 100}>
+                <div className="flex h-full flex-col rounded-2xl border border-navy/10 bg-white p-7 shadow-sm">
+                  <h3 className="font-bold text-navy">{b.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink/70">{b.text}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -41,7 +64,7 @@ export default function Commercial() {
       <section className="border-y border-white/10 bg-panel py-20">
         <div className="mx-auto max-w-wrap px-5">
           <Reveal className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">
               Industries we <span className="text-accent">serve</span>
             </h2>
           </Reveal>
@@ -51,7 +74,7 @@ export default function Commercial() {
                 <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-white/95 p-3">
                   <img src={ind.icon} alt={ind.name} loading="lazy" className="max-h-full max-w-full" />
                 </div>
-                <div className="mt-3 text-xs font-medium text-white/60">{ind.name}</div>
+                <div className="mt-3 text-xs font-medium text-white/65">{ind.name}</div>
               </Reveal>
             ))}
           </div>
@@ -68,7 +91,7 @@ export default function Commercial() {
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {commercial.projects.map((p, i) => (
             <Reveal key={p.name} delay={(i % 3) * 100}>
-              <div className="group overflow-hidden rounded-2xl border border-white/10 bg-panel">
+              <div className="group overflow-hidden rounded-2xl border border-navy/10 bg-white shadow-sm transition hover:shadow-xl hover:shadow-navy/10">
                 <div className="h-48 overflow-hidden">
                   <img
                     src={p.image}
@@ -79,7 +102,7 @@ export default function Commercial() {
                 </div>
                 <div className="p-6">
                   <h3 className="font-semibold">{p.name}</h3>
-                  <p className="mt-1 text-sm text-white/50">{p.detail}</p>
+                  <p className="mt-1 text-sm text-ink/55">{p.detail}</p>
                 </div>
               </div>
             </Reveal>
@@ -94,7 +117,7 @@ export default function Commercial() {
             {commercial.competencies.map((c) => (
               <span
                 key={c}
-                className="rounded-full border border-white/15 px-5 py-2 text-sm font-medium text-white/70"
+                className="rounded-full border border-white/20 px-5 py-2 text-sm font-medium text-white/75"
               >
                 {c}
               </span>

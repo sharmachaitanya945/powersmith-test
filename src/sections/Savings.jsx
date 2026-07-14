@@ -17,7 +17,7 @@ export default function Savings() {
   const estimate = estimateSavings(bill)
 
   return (
-    <section id="savings" className="border-y border-white/10 bg-panel py-24">
+    <section id="savings" className="bg-gradient-to-b from-sky-soft to-white py-24">
       <div className="mx-auto grid max-w-wrap items-center gap-14 px-5 lg:grid-cols-2">
         <Reveal>
           <h2 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
@@ -25,7 +25,7 @@ export default function Savings() {
           </h2>
           <ul className="mt-8 space-y-4">
             {savings.points.map((p) => (
-              <li key={p} className="flex items-start gap-3 text-white/70">
+              <li key={p} className="flex items-start gap-3 text-ink/75">
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
@@ -42,9 +42,9 @@ export default function Savings() {
         </Reveal>
 
         <Reveal delay={150}>
-          <div className="rounded-3xl border border-white/10 bg-night p-8 sm:p-10">
-            <h3 className="text-lg font-semibold">Estimate your savings</h3>
-            <p className="mt-1 text-sm text-white/50">
+          <div className="rounded-3xl border border-white/10 bg-panel p-8 shadow-2xl shadow-navy/20 sm:p-10">
+            <h3 className="text-lg font-semibold text-white">Estimate your savings</h3>
+            <p className="mt-1 text-sm text-white/55">
               What&apos;s your average monthly electric bill?
             </p>
 
@@ -78,11 +78,11 @@ export default function Savings() {
 
             <Link
               to="/contact"
-              className="mt-6 block rounded-full bg-accent py-3.5 text-center font-semibold text-night transition hover:bg-accent-dim"
+              className="btn-primary mt-6 w-full py-3.5"
             >
               Get My Exact Number
             </Link>
-            <p className="mt-4 text-[11px] leading-relaxed text-white/35">{savings.disclaimer}</p>
+            <p className="mt-4 text-[11px] leading-relaxed text-white/40">{savings.disclaimer}</p>
           </div>
         </Reveal>
       </div>

@@ -12,7 +12,7 @@ export default function ServiceArea() {
             Serving San Diego County{' '}
             <span className="text-accent">& beyond</span>
           </h2>
-          <p className="mt-4 max-w-md leading-relaxed text-white/60">
+          <p className="mt-4 max-w-md leading-relaxed text-ink/70">
             Headquartered in downtown San Diego and operating across multiple states through our
             network of leading national installers, financiers and manufacturers.
           </p>
@@ -21,13 +21,13 @@ export default function ServiceArea() {
               <Link
                 key={c.slug}
                 to={`/solar/${c.slug}`}
-                className="rounded-full border border-white/15 px-4 py-1.5 text-sm text-white/70 transition hover:border-accent/50 hover:text-white"
+                className="rounded-full border border-navy/15 px-4 py-1.5 text-sm text-ink/75 transition hover:border-accent/50 hover:bg-accent/5 hover:text-navy"
               >
                 {c.name}
               </Link>
             ))}
           </div>
-          <p className="mt-6 text-sm text-white/40">{company.address}</p>
+          <p className="mt-6 text-sm text-ink/45">{company.address}</p>
         </Reveal>
 
         <Reveal delay={150}>

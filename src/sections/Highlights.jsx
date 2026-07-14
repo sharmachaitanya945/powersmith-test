@@ -28,18 +28,18 @@ export default function Highlights() {
         <h2 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
           {highlights.heading}
         </h2>
-        <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/60">{highlights.intro}</p>
+        <p className="mt-6 max-w-3xl text-lg leading-relaxed text-ink/70">{highlights.intro}</p>
       </Reveal>
 
       <div className="mt-16 grid gap-6 md:grid-cols-3">
         {highlights.items.map((item, i) => (
           <Reveal key={item.title} delay={i * 120}>
-            <div className="flex h-full flex-col rounded-3xl border border-white/10 bg-white/[0.03] p-9">
+            <div className="flex h-full flex-col rounded-3xl border border-navy/10 bg-mist p-9 transition hover:border-accent/40 hover:shadow-lg hover:shadow-navy/5">
               <span className="text-accent">
                 <span className="block h-11 w-11">{icons[i]}</span>
               </span>
               <h3 className="mt-7 text-2xl font-bold">{item.title}</h3>
-              <p className="mt-3 leading-relaxed text-white/55">{item.text}</p>
+              <p className="mt-3 leading-relaxed text-ink/70">{item.text}</p>
             </div>
           </Reveal>
         ))}

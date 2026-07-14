@@ -24,32 +24,32 @@ export default function Plans() {
               <div
                 className={`relative flex h-full flex-col rounded-3xl border p-8 ${
                   plan.featured
-                    ? 'border-accent bg-accent/5'
-                    : 'border-white/10 bg-panel'
+                    ? 'border-accent bg-accent/5 shadow-xl shadow-accent/10'
+                    : 'border-navy/10 bg-white shadow-sm'
                 }`}
               >
                 {plan.featured && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-accent px-4 py-1 text-xs font-bold uppercase tracking-widest text-night">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-accent px-4 py-1 text-xs font-bold uppercase tracking-widest text-white">
                     Most Popular
                   </span>
                 )}
                 <h2 className="text-2xl font-bold">{plan.name}</h2>
-                <p className="mt-1 text-sm text-white/55">{plan.tagline}</p>
+                <p className="mt-1 text-sm text-ink/60">{plan.tagline}</p>
 
-                <dl className="mt-6 space-y-2 border-y border-white/10 py-5 text-sm">
+                <dl className="mt-6 space-y-2 border-y border-navy/10 py-5 text-sm">
                   <div className="flex justify-between gap-4">
-                    <dt className="text-white/45">Down payment</dt>
+                    <dt className="text-ink/50">Down payment</dt>
                     <dd className="text-right font-medium">{plan.down}</dd>
                   </div>
                   <div className="flex justify-between gap-4">
-                    <dt className="text-white/45">Ownership</dt>
+                    <dt className="text-ink/50">Ownership</dt>
                     <dd className="text-right font-medium">{plan.ownership}</dd>
                   </div>
                 </dl>
 
                 <ul className="mt-6 flex-1 space-y-3">
                   {plan.benefits.map((b) => (
-                    <li key={b} className="flex items-start gap-3 text-sm text-white/70">
+                    <li key={b} className="flex items-start gap-3 text-sm text-ink/75">
                       <svg
                         viewBox="0 0 24 24"
                         fill="none"
@@ -68,8 +68,8 @@ export default function Plans() {
                   to="/contact"
                   className={`mt-8 rounded-full py-3 text-center font-semibold transition ${
                     plan.featured
-                      ? 'bg-accent text-night hover:bg-accent-dim'
-                      : 'border border-white/25 text-white hover:bg-white/10'
+                      ? 'bg-gradient-to-r from-accent to-accent-glow text-white shadow-lg shadow-accent/20 hover:brightness-105'
+                      : 'border border-navy/20 text-navy hover:bg-mist'
                   }`}
                 >
                   Get a Quote
@@ -79,7 +79,7 @@ export default function Plans() {
           ))}
         </div>
         <Reveal delay={200}>
-          <p className="mt-8 text-center text-sm text-white/40">
+          <p className="mt-8 text-center text-sm text-ink/50">
             All plans include OEM warranty for parts. Enhanced service available with the
             Protection Plus add-on.
           </p>
