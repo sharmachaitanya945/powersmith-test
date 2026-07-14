@@ -6,6 +6,11 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Anchor jumps (#stats, #savings) must clear the fixed 5rem navbar. */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
 body {
   @apply bg-white text-ink font-sans antialiased;
 }
