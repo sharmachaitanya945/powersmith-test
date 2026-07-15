@@ -15,6 +15,10 @@ export default function Hero() {
           loop
           playsInline
           poster={hero.image}
+          // Drone clip is fast; play it at half speed for a calmer, cinematic feel.
+          onLoadedMetadata={(e) => {
+            e.currentTarget.playbackRate = 0.5
+          }}
         >
           <source src={hero.video} type="video/mp4" />
         </video>
@@ -27,8 +31,9 @@ export default function Hero() {
         />
       )}
 
-      {/* Legibility overlay — navy scrim that carries into the navy stats band below */}
-      <div className="absolute inset-0 bg-gradient-to-b from-navy/85 via-navy/40 to-navy/95" />
+      {/* Legibility overlay — kept dark enough behind the text so it stays crisp
+          over the bright drone footage, then resolves into the navy stats band. */}
+      <div className="absolute inset-0 bg-gradient-to-b from-navy/75 via-navy/65 to-navy" />
 
       <div className="relative z-10 mx-auto max-w-4xl px-5 text-center">
         <VeteranBadge />

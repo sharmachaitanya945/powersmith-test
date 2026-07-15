@@ -9,17 +9,17 @@ export default function Services({
   intro = 'Solar, storage, EV charging and backup power — designed and installed as one seamless system.',
 }) {
   return (
-    <section id="services" className="bg-mist py-24">
+    <section id="services" className="border-y border-white/10 bg-panel py-24">
       <div className="mx-auto max-w-wrap px-5">
       <Reveal className="text-center">
-        <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
+        <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">
           {heading || (
             <>
               Everything your home needs to <span className="text-accent">go electric</span>
             </>
           )}
         </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-ink/70">{intro}</p>
+        <p className="mx-auto mt-4 max-w-2xl text-white/70">{intro}</p>
       </Reveal>
 
       <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

@@ -5,7 +5,7 @@ import VeteranBadge from './VeteranBadge'
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-panel">
+    <footer className="border-t border-white/10 bg-carbon">
       <div className="mx-auto grid max-w-wrap gap-10 px-5 py-14 md:grid-cols-4">
         <div>
           <img src={logo} alt="PowerSmith Energy — Veteran Owned" className="h-10 w-auto" />

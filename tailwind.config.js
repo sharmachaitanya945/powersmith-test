@@ -18,12 +18,15 @@ export default {
         accent: '#EA622D', // Solar Orange — primary CTA
         'accent-dim': '#c4501f',
         'accent-glow': '#F5842A', // brighter orange for the gradient CTA
+        carbon: '#0B0D12', // Brand Black — deep near-black for high-impact fills
         night: '#181C28', // legacy dark (retained for the hero video scrim)
       },
       fontFamily: {
-        // Match the fonts used on the original powersmithsolar.com site
-        sans: ['"Nunito Sans"', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
-        display: ['Montserrat', 'system-ui', 'sans-serif'],
+        // Avenir-first per client. Avenir Next / Avenir render on devices that
+        // have them (e.g. Apple); everything else falls back to the loaded web
+        // fonts (Nunito Sans / Montserrat) so the design stays intact.
+        sans: ['"Avenir Next"', 'Avenir', '"Nunito Sans"', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+        display: ['"Avenir Next"', 'Avenir', 'Montserrat', 'system-ui', 'sans-serif'],
       },
       maxWidth: {
         wrap: '76rem',

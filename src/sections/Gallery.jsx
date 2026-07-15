@@ -15,7 +15,7 @@ const shots = [
 
 export default function Gallery() {
   return (
-    <section className="border-y border-white/10 bg-panel py-28">
+    <section className="border-y border-white/10 bg-carbon py-28">
       <div className="mx-auto max-w-wrap px-5">
         <Reveal>
           <h2 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
