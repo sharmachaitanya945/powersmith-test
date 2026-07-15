@@ -54,12 +54,12 @@ export default function Hero() {
           >
             Get a Free Quote
           </Link>
-          <a
-            href="#savings"
+          <Link
+            to="/solar-calculator"
             className="w-full min-w-[15rem] rounded-full border border-white/40 bg-white/10 px-10 py-4 font-semibold text-white backdrop-blur transition hover:bg-white/20 sm:w-auto"
           >
             Calculate Savings
-          </a>
+          </Link>
         </div>
       </div>
 

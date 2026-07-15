@@ -656,6 +656,7 @@ export const footerLinks = [
   { label: 'ITC Benefits', to: '/itc-benefits' },
   { label: 'FAQ', to: '/faq' },
   { label: 'Contact', to: '/contact' },
+  { label: 'Solar Calculator', to: '/solar-calculator' },
   { label: 'Blog', href: 'https://powersmithsolar.com/blog/' },
   { label: 'Affiliate Signup', href: 'https://powersmithsolar.com/affiliate-signup/' },
   { label: 'Privacy Policy', href: 'https://powersmithsolar.com/privacy-policy/' },

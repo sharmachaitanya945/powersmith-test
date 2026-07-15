@@ -12,6 +12,7 @@ import ItcBenefits from './pages/ItcBenefits'
 import FaqPage from './pages/FaqPage'
 import Contact from './pages/Contact'
 import CityLanding from './pages/CityLanding'
+import SolarCalculator from './pages/SolarCalculator'
 import { localBusinessSchema } from './content/site'
 
 function ScrollToTop() {
@@ -57,6 +58,7 @@ export default function App() {
           <Route path="/itc-benefits" element={<ItcBenefits />} />
           <Route path="/faq" element={<FaqPage />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/solar-calculator" element={<SolarCalculator />} />
           <Route path="/solar/:city" element={<CityLanding />} />
           <Route path="*" element={<Home />} />
         </Routes>
