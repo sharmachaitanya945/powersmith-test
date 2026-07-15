@@ -27,13 +27,6 @@ import photoAnthony from '../assets/testimonial-anthony.jpg'
 import photoMike from '../assets/testimonial-mike.jpg'
 import photoSteve from '../assets/testimonial-steve.jpg'
 import photoRay from '../assets/testimonial-raijy.jpg'
-import indWarehouses from '../assets/ind-warehouses.png'
-import indMultifamily from '../assets/ind-multifamily.png'
-import indStorage from '../assets/ind-storage.png'
-import indAutoDealers from '../assets/ind-auto-dealerships.png'
-import indManufacturing from '../assets/ind-manufacturing.png'
-import indMobileHome from '../assets/ind-mobile-home-parks.png'
-import indChurches from '../assets/ind-churches.png'
 
 export { logo, usaMap, imgHomeEnergy, imgMegapack, imgSolarCell }
 
@@ -404,13 +397,13 @@ export const commercial = {
     'Project Management',
   ],
   industries: [
-    { name: 'Warehouses', icon: indWarehouses },
-    { name: 'Multi-Family Homes', icon: indMultifamily },
-    { name: 'Storage Facilities', icon: indStorage },
-    { name: 'Auto Dealerships', icon: indAutoDealers },
-    { name: 'Manufacturing Plants', icon: indManufacturing },
-    { name: 'Mobile Home Parks', icon: indMobileHome },
-    { name: 'Churches', icon: indChurches },
+    { name: 'Warehouses', key: 'warehouse' },
+    { name: 'Multi-Family Homes', key: 'multifamily' },
+    { name: 'Storage Facilities', key: 'storage' },
+    { name: 'Auto Dealerships', key: 'auto' },
+    { name: 'Manufacturing Plants', key: 'factory' },
+    { name: 'Mobile Home Parks', key: 'caravan' },
+    { name: 'Churches', key: 'church' },
   ],
   projects: [
     { name: 'Pacific BMW Solar Carport', detail: 'Solar carport installation', image: imgBmwCarport },
