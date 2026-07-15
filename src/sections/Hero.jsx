@@ -31,11 +31,13 @@ export default function Hero() {
         />
       )}
 
-      {/* Legibility overlay — kept dark enough behind the text so it stays crisp
-          over the bright drone footage, then resolves into the navy stats band. */}
-      <div className="absolute inset-0 bg-gradient-to-b from-navy/75 via-navy/65 to-navy" />
+      {/* Keep the drone footage vivid: a light neutral gradient darkens only the
+          top (for the navbar) and resolves into navy at the base (stats band),
+          plus a soft focus behind the headline so text stays crisp. */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-navy" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(62%_52%_at_50%_44%,rgba(3,14,28,0.55),transparent_72%)]" />
 
-      <div className="relative z-10 mx-auto max-w-4xl px-5 text-center">
+      <div className="relative z-10 mx-auto max-w-4xl px-5 text-center [text-shadow:0_2px_18px_rgba(0,0,0,0.45)]">
         <VeteranBadge />
         <h1 className="mt-7 text-5xl font-bold leading-[1.02] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
           Power Your Home.

@@ -52,6 +52,11 @@ export const pub = {
   // Equipment / product shots
   teslaBattery: '/Tesla-Solar-Battery-1024x1024-1.webp', // real Tesla Powerwalls
   teslaCharging: '/tesla_100622512_h-1024x587.webp', // Tesla EV charging
+  // Royalty-free stock (Pexels, free for commercial use) for the non-solar
+  // service cards where drone shots don't fit the subject.
+  backupGenerator: '/stock/backup-generator.jpg', // standby generator + inverters
+  electricPanel: '/stock/electric-panel.jpg', // tech working a modern breaker panel
+  systemUpgrade: '/stock/system-upgrade.jpg', // installer fitting a roof panel
 }
 export const solarInsureBadge = '/2023-Solar-Insure-Certified-Installer-Badge-1-1-1024x1024.png'
 export const authorizedDealerBadge = '/Banner-Posts-1024x371-1.webp' // white "Authorized Dealer" graphic
@@ -140,14 +145,14 @@ export const services = [
   {
     title: 'Backup Generators',
     blurb: 'Whole-home backup for total peace of mind, seamlessly integrated with your solar system.',
-    image: pub.estate,
+    image: pub.backupGenerator,
     to: '/contact',
   },
   {
     title: 'System Upgrades',
     blurb:
       'Already have solar? Add panels without losing NEM 1.0/2.0 status, expand storage, or upgrade your electric panel.',
-    image: pub.aerial1,
+    image: pub.systemUpgrade,
     to: '/contact',
   },
 ]
@@ -179,21 +184,21 @@ export const residentialServices = [
     title: 'Backup Generators',
     blurb:
       'Whole-home backup for total peace of mind through wildfire-season outages, seamlessly integrated with your solar system.',
-    image: pub.estate,
+    image: pub.backupGenerator,
     to: '/contact',
   },
   {
     title: 'System Upgrades',
     blurb:
       'Already have solar? Add panels without losing your NEM 1.0 or 2.0 status, expand storage, or modernise ageing equipment.',
-    image: pub.aerial1,
+    image: pub.systemUpgrade,
     to: '/contact',
   },
   {
     title: 'Electric Panel Upgrades',
     blurb:
       'Older main panel? We upgrade your service so it can safely carry solar, a battery and an EV charger for years to come.',
-    image: pub.neighborhood,
+    image: pub.electricPanel,
     to: '/contact',
   },
 ]

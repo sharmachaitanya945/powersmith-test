@@ -13,11 +13,18 @@ const icons = [
     <path d="M6 3h12v16l-6-3.5L6 19V3z" strokeLinejoin="round" />
     <path d="M12 7l1 2 2 .2-1.5 1.4.4 2-1.9-1-1.9 1 .4-2L9 9.2 11 9l1-2z" strokeLinejoin="round" />
   </svg>,
-  // Sustainable Energy — sun over panel
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" key="2">
-    <circle cx="12" cy="8" r="3" />
-    <path d="M12 1.5V3M4.8 4.8l1 1M19.2 4.8l-1 1M2 8h1.5M20.5 8H22" strokeLinecap="round" />
-    <path d="M5 15h14l1.5 6H3.5L5 15zM9 15l-.7 6M15 15l.7 6M4.2 18h15.6" strokeLinejoin="round" />
+  // Sustainable Energy — leaf
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.6"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    key="2"
+  >
+    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.52-4.48 10-10 10Z" />
+    <path d="M2 21c0-3 1.85-5.36 5.08-6" />
   </svg>,
 ]
 
