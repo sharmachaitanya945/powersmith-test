@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { company, nav, logo } from '../content/site'
 
+// Internal portal for PowerSmith sales reps (separate GHL-hosted app).
+const SALES_PORTAL = 'https://solar.powersmithsolar.com/home-7406'
+
 // Floating "pill" navbar (Daylight-style): a rounded, centered navy bar that
 // hovers over the page. Navy keeps the white PowerSmith logo crisp on the new
 // light theme, while the gradient-orange CTA gives it the Daylight pop.
@@ -28,13 +31,13 @@ export default function Navbar() {
           <img src={logo} alt="PowerSmith Energy — Veteran Owned" className="h-9 w-auto sm:h-10" />
         </Link>
 
-        <nav className="mx-auto hidden items-center gap-6 lg:flex">
+        <nav className="mx-auto hidden items-center gap-5 xl:flex">
           {nav.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
-                `text-sm font-medium transition-colors ${
+                `whitespace-nowrap text-sm font-medium transition-colors ${
                   isActive ? 'text-white' : 'text-white/65 hover:text-white'
                 }`
               }
@@ -45,12 +48,20 @@ export default function Navbar() {
         </nav>
 
         <div className="flex shrink-0 items-center gap-2">
+          <a
+            href={SALES_PORTAL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden rounded-full border border-white/30 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10 md:inline-flex"
+          >
+            Sales Rep Portal
+          </a>
           <Link to="/contact" className="btn-primary hidden px-5 py-2 text-sm sm:inline-flex">
             Get a Quote
           </Link>
 
           <button
-            className="flex flex-col gap-1.5 p-2 lg:hidden"
+            className="flex flex-col gap-1.5 p-2 xl:hidden"
             onClick={() => setOpen(!open)}
             aria-label="Toggle menu"
             aria-expanded={open}
@@ -63,7 +74,7 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <nav className="mx-auto mt-2 max-w-wrap rounded-3xl border border-white/10 bg-navy/95 px-5 pb-6 pt-3 shadow-2xl shadow-navy/30 backdrop-blur lg:hidden">
+        <nav className="mx-auto mt-2 max-w-wrap rounded-3xl border border-white/10 bg-navy/95 px-5 pb-6 pt-3 shadow-2xl shadow-navy/30 backdrop-blur xl:hidden">
           {nav.map((item) => (
             <NavLink
               key={item.to}
@@ -81,6 +92,15 @@ export default function Navbar() {
           >
             Get a Quote
           </Link>
+          <a
+            href={SALES_PORTAL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setOpen(false)}
+            className="mt-3 block rounded-full border border-white/25 py-3 text-center font-semibold text-white"
+          >
+            Sales Rep Portal
+          </a>
           <a href={company.phoneHref} className="mt-4 block text-center text-sm text-white/50">
             Or call {company.phone}
           </a>

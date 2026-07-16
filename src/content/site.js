@@ -542,6 +542,7 @@ export const nav = [
   { label: 'Plans', to: '/plans' },
   { label: 'Batteries', to: '/batteries' },
   { label: 'Tax Credits', to: '/itc-benefits' },
+  { label: 'Calculator', to: '/solar-calculator' },
   { label: 'About', to: '/about' },
   { label: 'FAQ', to: '/faq' },
 ]
