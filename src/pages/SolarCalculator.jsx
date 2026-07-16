@@ -1,12 +1,12 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Seo from '../components/Seo'
 import { company } from '../content/site'
 
-// --- Config (provided by the client via env vars) -------------------------
-// VITE_GOOGLE_MAPS_API_KEY  -> Places autocomplete + Static satellite view
-// VITE_GHL_SOLARCALC_WEBHOOK_URL (or VITE_GHL_WEBHOOK_URL) -> GoHighLevel inbound webhook
-const MAPS_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
+// --- Config ----------------------------------------------------------------
+// Address autocomplete: Photon (OpenStreetMap) — no API key, no billing.
+// Roof satellite view:  Esri World Imagery export — no API key, no billing.
+// VITE_GHL_SOLARCALC_WEBHOOK_URL (or VITE_GHL_WEBHOOK_URL) -> GoHighLevel webhook.
 const WEBHOOK =
   import.meta.env.VITE_GHL_SOLARCALC_WEBHOOK_URL || import.meta.env.VITE_GHL_WEBHOOK_URL
 
@@ -40,22 +40,26 @@ function computeEstimate(bill, rate) {
   return { monthlyKwh, annualKwh, systemKw, grossCost, netCost, remainingBill, monthlySavings }
 }
 
-// --- Google Maps (Places) script loader (loads once) ----------------------
-let mapsPromise = null
-function loadMaps() {
-  if (!MAPS_KEY) return Promise.reject(new Error('no-key'))
-  if (window.google?.maps?.places) return Promise.resolve()
-  if (mapsPromise) return mapsPromise
-  mapsPromise = new Promise((resolve, reject) => {
-    const s = document.createElement('script')
-    s.src = `https://maps.googleapis.com/maps/api/js?key=${MAPS_KEY}&libraries=places`
-    s.async = true
-    s.defer = true
-    s.onload = () => resolve()
-    s.onerror = () => reject(new Error('maps-failed'))
-    document.head.appendChild(s)
-  })
-  return mapsPromise
+// Turn Photon GeoJSON features into clean address suggestions.
+function toSuggestions(data) {
+  return (data?.features || [])
+    .map((f) => {
+      const p = f.properties || {}
+      const line1 = [p.housenumber, p.street || p.name].filter(Boolean).join(' ')
+      const city = p.city || p.district || p.town || p.village || p.county || ''
+      const label = [line1, city, p.state, p.postcode].filter(Boolean).join(', ')
+      const [lng, lat] = f.geometry?.coordinates || []
+      return { label, city, state: p.state || '', zip: p.postcode || '', lat, lng }
+    })
+    .filter((s) => s.label && s.lat != null)
+}
+
+// Free Esri World Imagery satellite tile centered on the home (~130 m window).
+function satelliteFor(lat, lng) {
+  if (lat == null || lng == null) return null
+  const d = 0.0006
+  const bbox = `${lng - d},${lat - d},${lng + d},${lat + d}`
+  return `https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=${bbox}&bboxSR=4326&imageSR=3857&size=640,640&format=jpg&f=image`
 }
 
 const inputClass =
@@ -107,6 +111,21 @@ function StatCard({ label, value, highlight }) {
   )
 }
 
+function Satellite({ url, className }) {
+  if (!url) return null
+  return (
+    <div className={`relative ${className || ''}`}>
+      <img src={url} alt="Satellite top view of your home" className="h-full w-full object-cover" />
+      <span
+        className="absolute bottom-1 right-2 text-[10px] text-white/85"
+        style={{ textShadow: '0 1px 2px rgba(0,0,0,0.65)' }}
+      >
+        Imagery © Esri
+      </span>
+    </div>
+  )
+}
+
 export default function SolarCalculator() {
   const [step, setStep] = useState(0)
   const [status, setStatus] = useState('idle') // idle | sending | done
@@ -126,44 +145,38 @@ export default function SolarCalculator() {
     lastName: '',
     email: '',
   })
-  const addrRef = useRef(null)
+  const [suggestions, setSuggestions] = useState([])
+  const [showSug, setShowSug] = useState(false)
   const set = (patch) => setForm((f) => ({ ...f, ...patch }))
 
-  // Attach Google Places autocomplete once the user reaches the address step.
+  // Debounced Photon address lookup (biased toward San Diego).
   useEffect(() => {
-    if (step !== 5 || !addrRef.current) return
-    loadMaps()
-      .then(() => {
-        const ac = new window.google.maps.places.Autocomplete(addrRef.current, {
-          types: ['address'],
-          componentRestrictions: { country: 'us' },
-          fields: ['formatted_address', 'geometry', 'address_components'],
-        })
-        ac.addListener('place_changed', () => {
-          const place = ac.getPlace()
-          if (!place?.geometry) return
-          const comp = (type) =>
-            (place.address_components || []).find((c) => c.types.includes(type))?.long_name || ''
-          set({
-            address: place.formatted_address || addrRef.current.value,
-            city: comp('locality'),
-            state: comp('administrative_area_level_1'),
-            zip: comp('postal_code'),
-            lat: place.geometry.location.lat(),
-            lng: place.geometry.location.lng(),
-          })
-        })
-      })
-      .catch(() => {})
-  }, [step])
+    if (step !== 5 || !showSug) return
+    const query = form.address.trim()
+    if (query.length < 3) {
+      setSuggestions([])
+      return
+    }
+    const t = setTimeout(() => {
+      fetch(
+        `https://photon.komoot.io/api/?q=${encodeURIComponent(query)}&lang=en&limit=6&lat=32.72&lon=-117.16`
+      )
+        .then((r) => r.json())
+        .then((data) => setSuggestions(toSuggestions(data)))
+        .catch(() => setSuggestions([]))
+    }, 250)
+    return () => clearTimeout(t)
+  }, [form.address, showSug, step])
+
+  const selectSuggestion = (s) => {
+    set({ address: s.label, city: s.city, state: s.state, zip: s.zip, lat: s.lat, lng: s.lng })
+    setShowSug(false)
+    setSuggestions([])
+  }
 
   const rate = UTILITIES.find((u) => u.label === form.utility)?.rate || 0.4
   const est = computeEstimate(Number(form.bill) || 0, rate)
-
-  const satelliteUrl =
-    MAPS_KEY && form.lat != null
-      ? `https://maps.googleapis.com/maps/api/staticmap?center=${form.lat},${form.lng}&zoom=20&size=640x360&scale=2&maptype=satellite&key=${MAPS_KEY}`
-      : null
+  const satelliteUrl = satelliteFor(form.lat, form.lng)
 
   const canNext = () => {
     switch (step) {
@@ -365,14 +378,42 @@ export default function SolarCalculator() {
                 <p className="mt-1 text-sm text-ink/60">
                   Start typing and pick your address from the list.
                 </p>
-                <input
-                  ref={addrRef}
-                  value={form.address}
-                  onChange={(e) => set({ address: e.target.value })}
-                  placeholder="Home address"
-                  autoComplete="off"
-                  className={`mt-6 ${inputClass}`}
-                />
+
+                <div className="relative mt-6">
+                  <input
+                    value={form.address}
+                    onChange={(e) => {
+                      set({ address: e.target.value, lat: null, lng: null })
+                      setShowSug(true)
+                    }}
+                    onFocus={() => {
+                      if (suggestions.length) setShowSug(true)
+                    }}
+                    onBlur={() => setTimeout(() => setShowSug(false), 150)}
+                    placeholder="Start typing your home address…"
+                    autoComplete="off"
+                    className={inputClass}
+                  />
+                  {showSug && suggestions.length > 0 && (
+                    <ul className="absolute z-20 mt-1 max-h-64 w-full overflow-auto rounded-xl border border-navy/15 bg-white py-1 shadow-xl">
+                      {suggestions.map((s, i) => (
+                        <li key={i}>
+                          <button
+                            type="button"
+                            onMouseDown={(e) => {
+                              e.preventDefault()
+                              selectSuggestion(s)
+                            }}
+                            className="block w-full px-4 py-2.5 text-left text-sm text-ink transition hover:bg-mist"
+                          >
+                            {s.label}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+
                 <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
                   <input
                     value={form.city}
@@ -397,16 +438,10 @@ export default function SolarCalculator() {
                 {/* Satellite top-view of the selected home */}
                 <div className="mt-5 overflow-hidden rounded-2xl border border-navy/10 bg-mist">
                   {satelliteUrl ? (
-                    <img
-                      src={satelliteUrl}
-                      alt="Satellite top view of your home"
-                      className="h-56 w-full object-cover"
-                    />
+                    <Satellite url={satelliteUrl} className="h-56 w-full" />
                   ) : (
                     <div className="flex h-40 items-center justify-center px-6 text-center text-sm text-ink/50">
-                      {MAPS_KEY
-                        ? 'Select your address above to see a satellite view of your roof.'
-                        : 'A satellite view of your roof appears here once the Google Maps key is added.'}
+                      Pick your address from the list to see a satellite view of your roof.
                     </div>
                   )}
                 </div>
@@ -470,10 +505,9 @@ export default function SolarCalculator() {
                 </div>
 
                 {satelliteUrl && (
-                  <img
-                    src={satelliteUrl}
-                    alt="Satellite view of your home"
-                    className="mt-6 h-52 w-full rounded-2xl border border-navy/10 object-cover"
+                  <Satellite
+                    url={satelliteUrl}
+                    className="mt-6 h-52 w-full overflow-hidden rounded-2xl border border-navy/10"
                   />
                 )}
 
