@@ -6,9 +6,13 @@ import { company } from '../content/site'
 // --- Config ----------------------------------------------------------------
 // Address autocomplete: Photon (OpenStreetMap) — no API key, no billing.
 // Roof satellite view:  Esri World Imagery export — no API key, no billing.
-// VITE_GHL_SOLARCALC_WEBHOOK_URL (or VITE_GHL_WEBHOOK_URL) -> GoHighLevel webhook.
+// Leads POST to a GoHighLevel inbound webhook. The live URL is the default so the
+// form works the moment it deploys; set VITE_GHL_SOLARCALC_WEBHOOK_URL (or
+// VITE_GHL_WEBHOOK_URL) in Vercel to point at a different funnel without a code change.
 const WEBHOOK =
-  import.meta.env.VITE_GHL_SOLARCALC_WEBHOOK_URL || import.meta.env.VITE_GHL_WEBHOOK_URL
+  import.meta.env.VITE_GHL_SOLARCALC_WEBHOOK_URL ||
+  import.meta.env.VITE_GHL_WEBHOOK_URL ||
+  'https://services.leadconnectorhq.com/hooks/fxuEae04COCflR3L5lfh/webhook-trigger/c06c1c06-974f-496e-ac21-690b46d79218'
 
 // Options + rates come straight from the original Forminator "Solar Calc Form".
 const INTERESTS = [
@@ -196,6 +200,8 @@ export default function SolarCalculator() {
     setStatus('sending')
     const payload = {
       source: 'solar-calculator',
+      submittedAt: new Date().toISOString(),
+      pageUrl: typeof window !== 'undefined' ? window.location.href : '',
       interest: form.interest,
       existingSolar: form.existingSolar,
       utility: form.utility,
@@ -208,6 +214,7 @@ export default function SolarCalculator() {
       zip: form.zip,
       latitude: form.lat,
       longitude: form.lng,
+      roofSatelliteUrl: satelliteUrl || '',
       firstName: form.firstName,
       lastName: form.lastName,
       fullName: `${form.firstName} ${form.lastName}`.trim(),
@@ -221,10 +228,14 @@ export default function SolarCalculator() {
     }
     try {
       if (WEBHOOK) {
+        // text/plain keeps this a CORS "simple request" (no OPTIONS preflight),
+        // so the POST always reaches GoHighLevel — which still parses the JSON
+        // body. keepalive lets it finish even if the tab is closed right after.
         await fetch(WEBHOOK, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
           body: JSON.stringify(payload),
+          keepalive: true,
         })
       }
     } catch {
