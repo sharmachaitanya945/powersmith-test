@@ -41,7 +41,7 @@ export default function CityLanding() {
       />
 
       {/* Keyword-rich H1 targeting "[city] solar" intent */}
-      <section className="border-b border-navy/10 bg-gradient-to-b from-sky-soft to-white pb-16 pt-36 text-center">
+      <section className="border-b border-line/10 bg-gradient-to-b from-sky-soft to-paper pb-16 pt-36 text-center">
         <div className="mx-auto max-w-3xl px-5">
           <nav className="mb-5 text-xs text-ink/50">
             <Link to="/" className="hover:text-accent">

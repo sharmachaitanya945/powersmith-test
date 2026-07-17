@@ -2,6 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---------------------------------------------------------------------------
+   Theme tokens. Brand colors (navy, orange, sky, carbon) never change; only
+   these surface/text tokens flip. `:root.dark` is set by ThemeToggle (and by
+   the inline boot script in index.html, which runs before paint to avoid a
+   flash of the wrong theme).
+   Values are space-separated RGB so Tailwind's `/<alpha-value>` works.
+--------------------------------------------------------------------------- */
+:root {
+  --c-paper: 255 255 255; /* page background */
+  --c-card: 255 255 255; /* cards / panels */
+  --c-ink: 19 42 68; /* body copy  #132A44 */
+  --c-heading: 2 39 74; /* headings   #02274A */
+  --c-line: 2 39 74; /* hairlines  (navy, used with /opacity) */
+  --c-mist: 232 234 234; /* Panel Grey #E8EAEA */
+  --c-mist-50: 244 246 247; /* softest    #F4F6F7 */
+  --c-sky-soft: 232 246 254; /* blue tint  #E8F6FE */
+}
+
+:root.dark {
+  --c-paper: 8 12 20; /* deep carbon-navy page */
+  --c-card: 16 25 42; /* raised navy-slate card */
+  --c-ink: 205 216 230; /* light body copy */
+  --c-heading: 255 255 255; /* white headings */
+  --c-line: 255 255 255; /* hairlines (white, used with /opacity) */
+  --c-mist: 22 33 52; /* dark accent surface */
+  --c-mist-50: 18 27 44; /* softest dark surface */
+  --c-sky-soft: 12 40 66; /* deep blue tint */
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -12,14 +41,15 @@ section[id] {
 }
 
 body {
-  @apply bg-white text-ink font-sans antialiased;
+  @apply bg-paper text-ink font-sans antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1,
 h2,
 h3,
 h4 {
-  @apply font-display text-navy;
+  @apply font-display text-heading;
 }
 
 @layer components {
@@ -27,9 +57,9 @@ h4 {
   .btn-primary {
     @apply inline-flex items-center justify-center rounded-full bg-gradient-to-r from-accent to-accent-glow font-semibold text-white shadow-lg shadow-accent/20 transition hover:shadow-xl hover:shadow-accent/30 hover:brightness-105;
   }
-  /* Secondary / ghost CTA on light backgrounds */
+  /* Secondary / ghost CTA */
   .btn-ghost {
-    @apply inline-flex items-center justify-center rounded-full border border-navy/15 bg-white font-semibold text-navy transition hover:border-navy/30 hover:bg-mist;
+    @apply inline-flex items-center justify-center rounded-full border border-line/20 bg-card font-semibold text-heading transition hover:border-line/35 hover:bg-mist;
   }
 }
 
@@ -50,7 +80,7 @@ input[type='range'] {
   appearance: none;
   height: 6px;
   border-radius: 9999px;
-  background: #d6dade;
+  background: rgb(var(--c-line) / 0.22);
   outline: none;
 }
 input[type='range']::-webkit-slider-thumb {
@@ -61,8 +91,8 @@ input[type='range']::-webkit-slider-thumb {
   border-radius: 9999px;
   background: #ea622d;
   cursor: pointer;
-  border: 3px solid #ffffff;
-  box-shadow: 0 0 0 2px #ea622d, 0 2px 6px rgba(2, 39, 74, 0.25);
+  border: 3px solid rgb(var(--c-card));
+  box-shadow: 0 0 0 2px #ea622d, 0 2px 6px rgb(var(--c-line) / 0.25);
 }
 input[type='range']::-moz-range-thumb {
   width: 22px;
@@ -70,6 +100,6 @@ input[type='range']::-moz-range-thumb {
   border-radius: 9999px;
   background: #ea622d;
   cursor: pointer;
-  border: 3px solid #ffffff;
-  box-shadow: 0 0 0 2px #ea622d, 0 2px 6px rgba(2, 39, 74, 0.25);
+  border: 3px solid rgb(var(--c-card));
+  box-shadow: 0 0 0 2px #ea622d, 0 2px 6px rgb(var(--c-line) / 0.25);
 }

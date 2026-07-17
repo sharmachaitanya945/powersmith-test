@@ -41,7 +41,7 @@ export default function Highlights() {
       <div className="mt-16 grid gap-6 md:grid-cols-3">
         {highlights.items.map((item, i) => (
           <Reveal key={item.title} delay={i * 120}>
-            <div className="flex h-full flex-col rounded-3xl border border-navy/10 bg-mist p-9 transition hover:border-accent/40 hover:shadow-lg hover:shadow-navy/5">
+            <div className="flex h-full flex-col rounded-3xl border border-line/10 bg-mist p-9 transition hover:border-accent/40 hover:shadow-lg hover:shadow-navy/5">
               <span className="text-accent">
                 <span className="block h-11 w-11">{icons[i]}</span>
               </span>

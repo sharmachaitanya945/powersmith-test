@@ -21,7 +21,7 @@ export default function PageHero({ title, highlight, subtitle, image, imageAlt }
   }
 
   return (
-    <section className="border-b border-navy/10 bg-gradient-to-b from-sky-soft to-white pb-16 pt-36 text-center">
+    <section className="border-b border-line/10 bg-gradient-to-b from-sky-soft to-paper pb-16 pt-36 text-center">
       <div className="mx-auto max-w-3xl px-5">
         <h1 className="text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl">
           {title} {highlight && <span className="text-accent">{highlight}</span>}

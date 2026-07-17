@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { company, nav, logo } from '../content/site'
+import ThemeToggle from './ThemeToggle'
 
 // Internal portal for PowerSmith sales reps (separate GHL-hosted app).
 const SALES_PORTAL = 'https://solar.powersmithsolar.com/home-7406'
@@ -22,7 +23,7 @@ export default function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
       <div
-        className={`mx-auto flex max-w-wrap items-center justify-between gap-6 rounded-full border border-white/20 bg-navy px-5 py-3 ring-1 ring-black/5 transition-shadow duration-300 sm:px-7 ${
+        className={`mx-auto flex max-w-wrap items-center justify-between gap-4 rounded-full border border-white/20 bg-navy px-4 py-3 ring-1 ring-black/5 transition-shadow duration-300 sm:px-5 ${
           scrolled ? 'shadow-2xl shadow-black/50' : 'shadow-xl shadow-black/40'
         }`}
       >
@@ -31,7 +32,7 @@ export default function Navbar() {
           <img src={logo} alt="PowerSmith Energy — Veteran Owned" className="h-9 w-auto sm:h-10" />
         </Link>
 
-        <nav className="mx-auto hidden items-center gap-5 xl:flex">
+        <nav className="mx-auto hidden items-center gap-4 xl:flex">
           {nav.map((item) => (
             <NavLink
               key={item.to}
@@ -52,13 +53,15 @@ export default function Navbar() {
             href={SALES_PORTAL}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden rounded-full border border-white/30 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10 md:inline-flex"
+            className="hidden whitespace-nowrap rounded-full border border-white/30 px-3 py-2 text-sm font-semibold text-white transition hover:bg-white/10 md:inline-flex"
           >
             Sales Rep Portal
           </a>
           <Link to="/contact" className="btn-primary hidden px-5 py-2 text-sm sm:inline-flex">
             Get a Quote
           </Link>
+
+          <ThemeToggle />
 
           <button
             className="flex flex-col gap-1.5 p-2 xl:hidden"

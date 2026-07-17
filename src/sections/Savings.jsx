@@ -17,7 +17,7 @@ export default function Savings() {
   const estimate = estimateSavings(bill)
 
   return (
-    <section id="savings" className="bg-gradient-to-b from-sky-soft to-white py-24">
+    <section id="savings" className="bg-gradient-to-b from-sky-soft to-paper py-24">
       <div className="mx-auto grid max-w-wrap items-center gap-14 px-5 lg:grid-cols-2">
         <Reveal>
           <h2 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl">

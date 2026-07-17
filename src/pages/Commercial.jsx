@@ -110,8 +110,8 @@ export default function Commercial() {
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {commercial.benefits.map((b, i) => (
               <Reveal key={b.title} delay={(i % 4) * 100}>
-                <div className="flex h-full flex-col rounded-2xl border border-navy/10 bg-white p-7 shadow-sm">
-                  <h3 className="font-bold text-navy">{b.title}</h3>
+                <div className="flex h-full flex-col rounded-2xl border border-line/10 bg-card p-7 shadow-sm">
+                  <h3 className="font-bold text-heading">{b.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/70">{b.text}</p>
                 </div>
               </Reveal>
@@ -131,7 +131,7 @@ export default function Commercial() {
           <div className="mt-12 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-7">
             {commercial.industries.map((ind, i) => (
               <Reveal key={ind.name} delay={(i % 7) * 60} className="text-center">
-                <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-white text-accent shadow-md shadow-navy/20 transition group-hover:scale-105">
+                <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-card text-accent shadow-md shadow-navy/20 transition group-hover:scale-105">
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
@@ -163,7 +163,7 @@ export default function Commercial() {
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {commercial.projects.map((p, i) => (
             <Reveal key={p.name} delay={(i % 3) * 100}>
-              <div className="group overflow-hidden rounded-2xl border border-navy/10 bg-white shadow-sm transition hover:shadow-xl hover:shadow-navy/10">
+              <div className="group overflow-hidden rounded-2xl border border-line/10 bg-card shadow-sm transition hover:shadow-xl hover:shadow-navy/10">
                 <div className="h-48 overflow-hidden">
                   <img
                     src={p.image}

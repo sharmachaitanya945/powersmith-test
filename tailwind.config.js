@@ -1,25 +1,33 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        // --- Client light palette (2025 refresh) -------------------------
-        // Client feedback: "too much dark." Light surfaces now dominate;
-        // navy + orange stay as brand anchors, energy blue is the new accent.
-        navy: '#02274A', // PowerSmith Navy — headings, anchor bands, text
+        // --- Fixed brand colors (identical in light + dark) ----------------
+        navy: '#02274A', // PowerSmith Navy — anchor bands, brand surfaces
         'navy-700': '#0A3A63', // lighter navy for gradients
-        panel: '#02274A', // alias kept for navy feature sections / footer
-        ink: '#132A44', // deep navy-slate for body copy on light backgrounds
-        mist: '#E8EAEA', // Panel Grey — alternating light section background
-        'mist-50': '#F4F6F7', // barely-there grey for the softest sections
-        sky: '#56C9F5', // Energy Blue — secondary accent, links, highlights
-        'sky-soft': '#E8F6FE', // pale blue tint for light feature panels
+        panel: '#02274A', // alias kept for navy feature sections
+        sky: '#56C9F5', // Energy Blue — secondary accent
         accent: '#EA622D', // Solar Orange — primary CTA
         'accent-dim': '#c4501f',
         'accent-glow': '#F5842A', // brighter orange for the gradient CTA
-        carbon: '#0B0D12', // Brand Black — deep near-black for high-impact fills
+        carbon: '#0B0D12', // Brand Black — high-impact fills
         night: '#181C28', // legacy dark (retained for the hero video scrim)
+
+        // --- Themed tokens (flip between light/dark via CSS vars) ----------
+        // Defined in index.css on :root and :root.dark. Using the
+        // rgb(var(--x) / <alpha-value>) form keeps opacity modifiers working
+        // (e.g. text-ink/70, border-line/10).
+        paper: 'rgb(var(--c-paper) / <alpha-value>)', // page background
+        card: 'rgb(var(--c-card) / <alpha-value>)', // card / panel surface
+        ink: 'rgb(var(--c-ink) / <alpha-value>)', // body copy
+        heading: 'rgb(var(--c-heading) / <alpha-value>)', // headings
+        line: 'rgb(var(--c-line) / <alpha-value>)', // borders / hairlines
+        mist: 'rgb(var(--c-mist) / <alpha-value>)', // Panel Grey accent surface
+        'mist-50': 'rgb(var(--c-mist-50) / <alpha-value>)', // softest surface
+        'sky-soft': 'rgb(var(--c-sky-soft) / <alpha-value>)', // blue-tint panel
       },
       fontFamily: {
         // Avenir-first per client. Avenir Next / Avenir render on devices that

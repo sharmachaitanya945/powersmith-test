@@ -20,7 +20,7 @@ export default function VideoSection() {
       </Reveal>
 
       <Reveal delay={150} className="mt-10">
-        <div className="relative mx-auto aspect-video max-w-4xl overflow-hidden rounded-2xl border border-navy/10 bg-mist shadow-xl shadow-navy/10">
+        <div className="relative mx-auto aspect-video max-w-4xl overflow-hidden rounded-2xl border border-line/10 bg-mist shadow-xl shadow-navy/10">
           {play ? (
             <iframe
               className="h-full w-full"

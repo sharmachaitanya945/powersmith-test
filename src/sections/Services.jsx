@@ -27,7 +27,7 @@ export default function Services({
           <Reveal key={svc.title} delay={(i % 3) * 100}>
             <Link
               to={svc.to || '/contact'}
-              className="group block overflow-hidden rounded-2xl border border-navy/10 bg-white shadow-sm transition hover:-translate-y-1 hover:border-accent/40 hover:shadow-xl hover:shadow-navy/10"
+              className="group block overflow-hidden rounded-2xl border border-line/10 bg-card shadow-sm transition hover:-translate-y-1 hover:border-accent/40 hover:shadow-xl hover:shadow-navy/10"
             >
               <div className="h-48 overflow-hidden bg-mist">
                 <img

@@ -21,7 +21,7 @@ export default function ServiceArea() {
               <Link
                 key={c.slug}
                 to={`/solar/${c.slug}`}
-                className="rounded-full border border-navy/15 px-4 py-1.5 text-sm text-ink/75 transition hover:border-accent/50 hover:bg-accent/5 hover:text-navy"
+                className="rounded-full border border-line/15 px-4 py-1.5 text-sm text-ink/75 transition hover:border-accent/50 hover:bg-accent/5 hover:text-heading"
               >
                 {c.name}
               </Link>

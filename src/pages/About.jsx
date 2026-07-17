@@ -49,7 +49,7 @@ export default function About() {
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {values.map((v, i) => (
               <Reveal key={v.title} delay={(i % 3) * 100}>
-                <div className="h-full rounded-2xl border border-white/10 bg-white p-7 shadow-lg shadow-navy/20">
+                <div className="h-full rounded-2xl border border-white/10 bg-card p-7 shadow-lg shadow-navy/20">
                   <h3 className="font-semibold text-accent">{v.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/65">{v.text}</p>
                 </div>
@@ -77,14 +77,14 @@ export default function About() {
                   className="mx-auto h-28 w-28 rounded-full border-2 border-accent/40 object-cover"
                 />
               ) : (
-                <div className="mx-auto flex h-28 w-28 items-center justify-center rounded-full border-2 border-accent/40 bg-mist text-2xl font-bold text-navy">
+                <div className="mx-auto flex h-28 w-28 items-center justify-center rounded-full border-2 border-accent/40 bg-mist text-2xl font-bold text-heading">
                   {member.name
                     .split(' ')
                     .map((n) => n[0])
                     .join('')}
                 </div>
               )}
-              <div className="mt-4 font-semibold text-navy">{member.name}</div>
+              <div className="mt-4 font-semibold text-heading">{member.name}</div>
               <div className="text-xs text-ink/50">{member.role}</div>
             </Reveal>
           ))}

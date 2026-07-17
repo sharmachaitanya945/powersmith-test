@@ -50,8 +50,8 @@ export default function Residential() {
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {residentialWhy.map((item, i) => (
             <Reveal key={item.title} delay={(i % 3) * 100}>
-              <div className="flex h-full flex-col rounded-2xl border border-navy/10 bg-mist p-7 transition hover:border-accent/40">
-                <h3 className="font-bold text-navy">{item.title}</h3>
+              <div className="flex h-full flex-col rounded-2xl border border-line/10 bg-mist p-7 transition hover:border-accent/40">
+                <h3 className="font-bold text-heading">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink/70">{item.text}</p>
               </div>
             </Reveal>

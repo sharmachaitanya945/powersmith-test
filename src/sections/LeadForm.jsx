@@ -3,7 +3,7 @@ import { company } from '../content/site'
 import Reveal from '../components/Reveal'
 
 const inputClass =
-  'w-full rounded-xl border border-navy/15 bg-mist-50 px-4 py-3 text-ink placeholder-ink/40 outline-none transition focus:border-accent focus:bg-white'
+  'w-full rounded-xl border border-line/15 bg-mist-50 px-4 py-3 text-ink placeholder-ink/40 outline-none transition focus:border-accent focus:bg-card'
 
 // Two-step lead form. Posts to a GoHighLevel webhook when
 // VITE_GHL_WEBHOOK_URL is set; otherwise shows the success state (demo mode).
@@ -52,7 +52,7 @@ export default function LeadForm() {
         </Reveal>
 
         <Reveal delay={150} className="mt-10">
-          <div className="rounded-3xl border border-navy/10 bg-white p-8 shadow-xl shadow-navy/10 sm:p-10">
+          <div className="rounded-3xl border border-line/10 bg-card p-8 shadow-xl shadow-navy/10 sm:p-10">
             {status === 'done' ? (
               <div className="py-8 text-center">
                 <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-accent/15">

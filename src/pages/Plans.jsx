@@ -25,7 +25,7 @@ export default function Plans() {
                 className={`relative flex h-full flex-col rounded-3xl border p-8 ${
                   plan.featured
                     ? 'border-accent bg-accent/5 shadow-xl shadow-accent/10'
-                    : 'border-navy/10 bg-white shadow-sm'
+                    : 'border-line/10 bg-card shadow-sm'
                 }`}
               >
                 {plan.featured && (
@@ -36,7 +36,7 @@ export default function Plans() {
                 <h2 className="text-2xl font-bold">{plan.name}</h2>
                 <p className="mt-1 text-sm text-ink/60">{plan.tagline}</p>
 
-                <dl className="mt-6 space-y-2 border-y border-navy/10 py-5 text-sm">
+                <dl className="mt-6 space-y-2 border-y border-line/10 py-5 text-sm">
                   <div className="flex justify-between gap-4">
                     <dt className="text-ink/50">Down payment</dt>
                     <dd className="text-right font-medium">{plan.down}</dd>
@@ -69,7 +69,7 @@ export default function Plans() {
                   className={`mt-8 rounded-full py-3 text-center font-semibold transition ${
                     plan.featured
                       ? 'bg-gradient-to-r from-accent to-accent-glow text-white shadow-lg shadow-accent/20 hover:brightness-105'
-                      : 'border border-navy/20 text-navy hover:bg-mist'
+                      : 'border border-line/20 text-heading hover:bg-mist'
                   }`}
                 >
                   Get a Quote

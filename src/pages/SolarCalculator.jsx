@@ -63,7 +63,7 @@ function satelliteFor(lat, lng) {
 }
 
 const inputClass =
-  'w-full rounded-xl border border-navy/15 bg-white px-4 py-3 text-ink placeholder-ink/40 outline-none transition focus:border-accent'
+  'w-full rounded-xl border border-line/15 bg-card px-4 py-3 text-ink placeholder-ink/40 outline-none transition focus:border-accent'
 
 function RadioCards({ options, value, onChange, columns = 1 }) {
   return (
@@ -77,14 +77,14 @@ function RadioCards({ options, value, onChange, columns = 1 }) {
             onClick={() => onChange(label)}
             className={`flex items-center justify-between gap-3 rounded-2xl border-2 px-5 py-4 text-left font-semibold transition ${
               selected
-                ? 'border-accent bg-accent/5 text-navy'
-                : 'border-navy/15 bg-white text-navy hover:border-accent/40'
+                ? 'border-accent bg-accent/5 text-heading'
+                : 'border-line/15 bg-card text-heading hover:border-accent/40'
             }`}
           >
             <span>{label}</span>
             <span
               className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 ${
-                selected ? 'border-accent' : 'border-navy/25'
+                selected ? 'border-accent' : 'border-line/25'
               }`}
             >
               {selected && <span className="h-2.5 w-2.5 rounded-full bg-accent" />}
@@ -100,11 +100,11 @@ function StatCard({ label, value, highlight }) {
   return (
     <div
       className={`rounded-2xl border p-5 ${
-        highlight ? 'border-accent/40 bg-accent/5' : 'border-navy/10 bg-mist-50'
+        highlight ? 'border-accent/40 bg-accent/5' : 'border-line/10 bg-mist-50'
       }`}
     >
       <div className="text-xs font-semibold uppercase tracking-wide text-ink/55">{label}</div>
-      <div className={`mt-1 text-2xl font-extrabold ${highlight ? 'text-accent' : 'text-navy'}`}>
+      <div className={`mt-1 text-2xl font-extrabold ${highlight ? 'text-accent' : 'text-heading'}`}>
         {value}
       </div>
     </div>
@@ -246,7 +246,7 @@ export default function SolarCalculator() {
       />
 
       {/* Header */}
-      <section className="border-b border-navy/10 bg-gradient-to-b from-sky-soft to-white pb-14 pt-36 text-center">
+      <section className="border-b border-line/10 bg-gradient-to-b from-sky-soft to-paper pb-14 pt-36 text-center">
         <div className="mx-auto max-w-3xl px-5">
           <h1 className="text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl">
             Solar savings <span className="text-accent">calculator</span>
@@ -261,7 +261,7 @@ export default function SolarCalculator() {
       {/* Wizard */}
       <section className="bg-gradient-to-b from-navy to-navy-700 py-16">
         <div className="mx-auto max-w-2xl px-5">
-          <div className="rounded-3xl border border-white/10 bg-white p-6 shadow-2xl shadow-navy/40 sm:p-9">
+          <div className="rounded-3xl border border-white/10 bg-card p-6 shadow-2xl shadow-navy/40 sm:p-9">
             {step < 7 && (
               <>
                 {/* Progress */}
@@ -350,7 +350,7 @@ export default function SolarCalculator() {
             {step === 4 && (
               <>
                 <h2 className="text-2xl font-bold">What&apos;s your average monthly electric bill?</h2>
-                <div className="mt-8 text-center text-5xl font-extrabold text-navy">
+                <div className="mt-8 text-center text-5xl font-extrabold text-heading">
                   ${form.bill}
                   <span className="text-lg font-normal text-ink/40"> / mo</span>
                 </div>
@@ -395,7 +395,7 @@ export default function SolarCalculator() {
                     className={inputClass}
                   />
                   {showSug && suggestions.length > 0 && (
-                    <ul className="absolute z-20 mt-1 max-h-64 w-full overflow-auto rounded-xl border border-navy/15 bg-white py-1 shadow-xl">
+                    <ul className="absolute z-20 mt-1 max-h-64 w-full overflow-auto rounded-xl border border-line/15 bg-card py-1 shadow-xl">
                       {suggestions.map((s, i) => (
                         <li key={i}>
                           <button
@@ -436,7 +436,7 @@ export default function SolarCalculator() {
                 </div>
 
                 {/* Satellite top-view of the selected home */}
-                <div className="mt-5 overflow-hidden rounded-2xl border border-navy/10 bg-mist">
+                <div className="mt-5 overflow-hidden rounded-2xl border border-line/10 bg-mist">
                   {satelliteUrl ? (
                     <Satellite url={satelliteUrl} className="h-56 w-full" />
                   ) : (
@@ -507,7 +507,7 @@ export default function SolarCalculator() {
                 {satelliteUrl && (
                   <Satellite
                     url={satelliteUrl}
-                    className="mt-6 h-52 w-full overflow-hidden rounded-2xl border border-navy/10"
+                    className="mt-6 h-52 w-full overflow-hidden rounded-2xl border border-line/10"
                   />
                 )}
 
@@ -527,7 +527,7 @@ export default function SolarCalculator() {
                 </div>
 
                 <div className="mt-6 rounded-2xl border border-accent/30 bg-accent/5 p-5">
-                  <h3 className="font-semibold text-navy">What happens next</h3>
+                  <h3 className="font-semibold text-heading">What happens next</h3>
                   <p className="mt-1 text-sm leading-relaxed text-ink/70">
                     A PowerSmith energy expert will review your details and follow up with a tailored
                     solar &amp; battery recommendation for your property and goals.
@@ -558,7 +558,7 @@ export default function SolarCalculator() {
                   <button
                     type="button"
                     onClick={back}
-                    className="rounded-full px-5 py-3 text-sm font-semibold text-ink/50 transition hover:text-navy"
+                    className="rounded-full px-5 py-3 text-sm font-semibold text-ink/50 transition hover:text-heading"
                   >
                     ← Back
                   </button>

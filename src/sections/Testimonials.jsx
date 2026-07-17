@@ -38,7 +38,7 @@ export default function Testimonials() {
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           {testimonials.map((t, i) => (
             <Reveal key={i} delay={i * 120}>
-              <figure className="flex h-full flex-col rounded-2xl border border-white/10 bg-white p-8 text-night shadow-xl shadow-navy/20">
+              <figure className="flex h-full flex-col rounded-2xl border border-white/10 bg-card p-8 text-ink shadow-xl shadow-navy/20">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/15 font-bold text-accent">
@@ -55,10 +55,10 @@ export default function Testimonials() {
                   </svg>
                 </div>
                 <Stars className="mt-4 h-4 w-4" />
-                <blockquote className="mt-3 flex-1 text-sm leading-relaxed text-night/75">
+                <blockquote className="mt-3 flex-1 text-sm leading-relaxed text-ink/75">
                   {t.quote}
                 </blockquote>
-                <figcaption className="mt-5 text-xs text-night/45">{t.via}</figcaption>
+                <figcaption className="mt-5 text-xs text-ink/45">{t.via}</figcaption>
               </figure>
             </Reveal>
           ))}

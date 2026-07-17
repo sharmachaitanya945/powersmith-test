@@ -18,7 +18,7 @@ export default function Batteries() {
       <section className="mx-auto max-w-wrap px-5 py-12">
         <Reveal className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
           {batteries.brands.map((b) => (
-            <span key={b} className="text-lg font-bold text-navy/35 sm:text-xl">
+            <span key={b} className="text-lg font-bold text-heading/35 sm:text-xl">
               {b}
             </span>
           ))}
@@ -52,7 +52,7 @@ export default function Batteries() {
             src={batteries.enphase.image}
             alt="Enphase battery storage system"
             loading="lazy"
-            className="w-full rounded-2xl border border-navy/10 object-cover"
+            className="w-full rounded-2xl border border-line/10 object-cover"
           />
         </Reveal>
         <Reveal delay={150} className="order-1 lg:order-2">
@@ -81,7 +81,7 @@ export default function Batteries() {
           <div className="mt-10 space-y-4">
             {batteries.nem3.points.map((p, i) => (
               <Reveal key={i} delay={i * 100}>
-                <div className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white p-6 shadow-lg shadow-navy/20">
+                <div className="flex items-start gap-4 rounded-2xl border border-white/10 bg-card p-6 shadow-lg shadow-navy/20">
                   <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/15 text-sm font-bold text-accent">
                     {i + 1}
                   </div>

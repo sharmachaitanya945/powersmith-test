@@ -7,7 +7,7 @@ import { itc, seo } from '../content/site'
 function CreditBlock({ heading, data, delay = 0 }) {
   return (
     <Reveal delay={delay}>
-      <div className="h-full rounded-3xl border border-navy/10 bg-white p-8 shadow-lg shadow-navy/5 sm:p-10">
+      <div className="h-full rounded-3xl border border-line/10 bg-card p-8 shadow-lg shadow-navy/5 sm:p-10">
         <h2 className="text-2xl font-bold">
           {heading} <span className="text-accent">ITC benefits</span>
         </h2>
@@ -24,7 +24,7 @@ function CreditBlock({ heading, data, delay = 0 }) {
         <h3 className="mt-10 text-sm font-bold uppercase tracking-widest text-ink/45">
           {data.example.title}
         </h3>
-        <dl className="mt-4 divide-y divide-navy/10 border-y border-navy/10 text-sm">
+        <dl className="mt-4 divide-y divide-line/10 border-y border-line/10 text-sm">
           {data.example.rows.map(([label, value]) => (
             <div key={label} className="flex justify-between gap-4 py-3">
               <dt className="text-ink/55">{label}</dt>
