@@ -6,13 +6,11 @@ import { company } from '../content/site'
 // --- Config ----------------------------------------------------------------
 // Address autocomplete: Photon (OpenStreetMap) — no API key, no billing.
 // Roof satellite view:  Esri World Imagery export — no API key, no billing.
-// Leads POST to a GoHighLevel inbound webhook. The live URL is the default so the
-// form works the moment it deploys; set VITE_GHL_SOLARCALC_WEBHOOK_URL (or
-// VITE_GHL_WEBHOOK_URL) in Vercel to point at a different funnel without a code change.
-const WEBHOOK =
-  import.meta.env.VITE_GHL_SOLARCALC_WEBHOOK_URL ||
-  import.meta.env.VITE_GHL_WEBHOOK_URL ||
-  'https://services.leadconnectorhq.com/hooks/fxuEae04COCflR3L5lfh/webhook-trigger/c06c1c06-974f-496e-ac21-690b46d79218'
+// Leads POST to our own same-origin serverless endpoint, which forwards them to
+// GoHighLevel server-side (see api/lead.js). This avoids CORS and, crucially,
+// avoids ad-blockers / tracking-protection that block direct calls to
+// leadconnectorhq.com from the browser — the usual reason a lead "never arrives".
+const LEAD_ENDPOINT = '/api/lead'
 
 // Options + rates come straight from the original Forminator "Solar Calc Form".
 const INTERESTS = [
@@ -234,17 +232,14 @@ export default function SolarCalculator() {
       estimatedMonthlySavings: Math.round(est.monthlySavings),
     }
     try {
-      if (WEBHOOK) {
-        // text/plain keeps this a CORS "simple request" (no OPTIONS preflight),
-        // so the POST always reaches GoHighLevel — which still parses the JSON
-        // body. keepalive lets it finish even if the tab is closed right after.
-        await fetch(WEBHOOK, {
-          method: 'POST',
-          headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
-          body: JSON.stringify(payload),
-          keepalive: true,
-        })
-      }
+      // Same-origin POST → no CORS, not blocked by ad-blockers. The serverless
+      // function forwards to GHL. keepalive lets it finish if the tab is closed.
+      await fetch(LEAD_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        keepalive: true,
+      })
     } catch {
       /* estimate is client-side; still show it even if the webhook errors */
     }
