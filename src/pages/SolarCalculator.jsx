@@ -148,6 +148,7 @@ export default function SolarCalculator() {
     firstName: '',
     lastName: '',
     email: '',
+    phone: '',
   })
   const [suggestions, setSuggestions] = useState([])
   const [showSug, setShowSug] = useState(false)
@@ -191,7 +192,12 @@ export default function SolarCalculator() {
       case 4: return form.bill > 0
       case 5: return form.address.trim().length > 5
       case 6:
-        return form.firstName.trim() && form.lastName.trim() && /.+@.+\..+/.test(form.email)
+        return (
+          form.firstName.trim() &&
+          form.lastName.trim() &&
+          /.+@.+\..+/.test(form.email) &&
+          form.phone.replace(/\D/g, '').length >= 10
+        )
       default: return true
     }
   }
@@ -219,6 +225,7 @@ export default function SolarCalculator() {
       lastName: form.lastName,
       fullName: `${form.firstName} ${form.lastName}`.trim(),
       email: form.email,
+      phone: form.phone,
       estimatedMonthlyKwh: Math.round(est.monthlyKwh),
       estimatedAnnualKwh: Math.round(est.annualKwh),
       recommendedSystemKw: Math.round(est.systemKw),
@@ -483,6 +490,14 @@ export default function SolarCalculator() {
                     value={form.email}
                     onChange={(e) => set({ email: e.target.value })}
                     placeholder="Email address"
+                    className={inputClass}
+                  />
+                  <input
+                    type="tel"
+                    value={form.phone}
+                    onChange={(e) => set({ phone: e.target.value })}
+                    placeholder="Phone number"
+                    autoComplete="tel"
                     className={inputClass}
                   />
                 </div>
