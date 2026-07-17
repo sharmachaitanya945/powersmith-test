@@ -6,7 +6,7 @@ import VeteranBadge from '../components/VeteranBadge'
 // Plays a background video when hero.video is set, otherwise a full-bleed image.
 export default function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden pb-24 pt-28 sm:pt-32">
       {hero.video ? (
         <video
           className="absolute inset-0 h-full w-full object-cover"
