@@ -4,14 +4,16 @@ import { company, nav } from '../content/site'
 import ThemeToggle from './ThemeToggle'
 import logoNavy from '../assets/logo-navy.png'
 import logoWhite from '../assets/logo-white.png'
+import veteranFlag from '../assets/veteran-flag.png'
 
 // Internal portals (separate GHL-hosted apps).
 const SALES_PORTAL = 'https://solar.powersmithsolar.com/home-7406'
 const PORTAL_LOGIN = 'https://app.gohighlevel.com'
 
-// Floating "pill" navbar. It flips with the theme: a glassy white pill + navy
-// logo in light mode, a navy pill + white logo in dark mode. Nav links are
-// vivid by default (not dull-until-hover) with an orange active/hover underline.
+// Floating "pill" navbar. Theme-aware (glass-white + navy logo in light, navy
+// pill + white logo in dark). Per Anthony: the logo is just the mark + wordmark
+// (no flag), and the veteran flag sits on the right beside the theme toggle so
+// it doesn't crowd the wordmark.
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
@@ -39,20 +41,23 @@ export default function Navbar() {
             : 'shadow-lg shadow-black/10 dark:shadow-black/40'
         }`}
       >
-        {/* Brand — logo swaps with the theme (navy on light pill, white on dark) */}
-        <Link to="/" onClick={() => setOpen(false)} className="shrink-0 pr-2 sm:pr-4">
-          <img src={logoNavy} alt="PowerSmith — Veteran Owned" className="h-9 w-auto sm:h-10 dark:hidden" />
-          <img src={logoWhite} alt="PowerSmith — Veteran Owned" className="hidden h-9 w-auto dark:block sm:h-10" />
-        </Link>
+        {/* LEFT — logo (mark + wordmark, no flag) + nav, shifted left */}
+        <div className="flex items-center gap-4 xl:gap-7">
+          <Link to="/" onClick={() => setOpen(false)} className="shrink-0">
+            <img src={logoNavy} alt="PowerSmith" className="h-7 w-auto dark:hidden sm:h-8" />
+            <img src={logoWhite} alt="PowerSmith" className="hidden h-7 w-auto dark:block sm:h-8" />
+          </Link>
 
-        <nav className="mx-auto hidden items-center gap-3 xl:flex">
-          {nav.map((item) => (
-            <NavLink key={item.to} to={item.to} className={navLinkClass}>
-              {item.label}
-            </NavLink>
-          ))}
-        </nav>
+          <nav className="hidden items-center gap-3 xl:flex">
+            {nav.map((item) => (
+              <NavLink key={item.to} to={item.to} className={navLinkClass}>
+                {item.label}
+              </NavLink>
+            ))}
+          </nav>
+        </div>
 
+        {/* RIGHT — actions, then the veteran flag beside the theme toggle */}
         <div className="flex shrink-0 items-center gap-2">
           <a
             href={PORTAL_LOGIN}
@@ -66,13 +71,21 @@ export default function Navbar() {
             href={SALES_PORTAL}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden whitespace-nowrap rounded-full border border-line/25 px-3 py-2 text-[13px] font-semibold text-heading transition hover:border-accent hover:text-accent dark:border-white/30 dark:text-white dark:hover:border-white dark:hover:bg-white/10 xl:inline-flex"
+            className="hidden whitespace-nowrap rounded-full border border-line/25 px-3 py-2 text-[13px] font-semibold text-heading transition hover:border-accent hover:text-accent dark:border-white/30 dark:text-white dark:hover:border-white dark:hover:bg-white/10 2xl:inline-flex"
           >
             Sales Rep Portal
           </a>
           <Link to="/contact" className="btn-primary hidden px-5 py-2 text-sm sm:inline-flex">
             Get a Quote
           </Link>
+
+          {/* Veteran-owned flag — sits apart from the wordmark, by the theme toggle */}
+          <img
+            src={veteranFlag}
+            alt="Veteran Owned"
+            title="Veteran-Owned & Operated"
+            className="hidden h-7 w-auto sm:block"
+          />
 
           <ThemeToggle />
 
