@@ -151,7 +151,8 @@ export const services = [
   {
     title: 'Battery Storage',
     blurb:
-      'Enphase, Tesla Powerwall 2, Franklin, SolArc and SolarEdge batteries — store the sun and beat Time-of-Use rates.',
+      'Generac PWRcell, Tesla Powerwall, Enphase and more — store the sun and beat Time-of-Use rates.',
+    // TODO: swap to the official Generac PWRcell photo once Anthony sends it.
     image: pub.teslaBattery,
     to: '/batteries',
   },
@@ -188,7 +189,7 @@ export const residentialServices = [
   {
     title: 'Battery Storage',
     blurb:
-      'Tesla Powerwall 2, Enphase, Franklin, SolArc and SolarEdge. Store your own sunshine, beat Time-of-Use rates and keep the lights on in an outage.',
+      'Generac PWRcell, Tesla Powerwall, Enphase, Franklin and SolarEdge. Store your own sunshine, beat Time-of-Use rates and keep the lights on in an outage.',
     image: pub.teslaBattery,
     to: '/batteries',
   },
@@ -493,8 +494,8 @@ export const itc = {
 // Real battery / Powerwall / Enphase / NEM 3.0 content
 export const batteries = {
   intro:
-    'PowerSmith offers industry-leading battery storage: Enphase, Tesla Powerwall 2, Franklin, SolArc and SolarEdge — store and sell power back to the grid when energy credits are most valuable.',
-  brands: ['Enphase', 'Tesla Powerwall 2', 'Franklin', 'SolArc', 'SolarEdge'],
+    'PowerSmith offers industry-leading battery storage: Generac PWRcell, Tesla Powerwall, Enphase, Franklin and SolarEdge — store and sell power back to the grid when energy credits are most valuable.',
+  brands: ['Generac PWRcell', 'Tesla Powerwall', 'Enphase', 'Franklin', 'SolarEdge'],
   powerwall: {
     title: 'The Powerwall',
     text: 'A rechargeable battery that stores electricity from your solar panels — or from the grid when utility rates are lowest — then powers your home during peak-rate hours or in the evening. Sleek, compact, easy to install and completely automated: it requires no maintenance.',
