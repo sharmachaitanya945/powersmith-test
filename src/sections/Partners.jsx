@@ -1,26 +1,39 @@
 import { partners } from '../content/site'
-import Reveal from '../components/Reveal'
 
-// TODO: swap text names for real partner logo SVG/PNG files from the client.
+// "Our Key Partners" — an auto-scrolling marquee of partner logos. Each logo
+// sits on a white chip so the (mostly dark-on-transparent) brand logos stay
+// legible in both light and dark mode. The list is duplicated once so the
+// CSS marquee (translateX -50%) loops seamlessly.
 export default function Partners() {
+  const row = [...partners, ...partners]
   return (
-    <section className="border-y border-white/10 bg-panel py-20">
+    <section className="border-y border-line/10 bg-mist-50 py-14">
       <div className="mx-auto max-w-wrap px-5">
-        <Reveal className="text-center">
-          <h2 className="text-xs font-semibold uppercase tracking-[0.3em] text-white/45">
-            Trusted national partners
-          </h2>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
-            {partners.map((p) => (
-              <span
-                key={p}
-                className="text-xl font-bold tracking-wide text-white/35 transition hover:text-white/80 sm:text-2xl"
+        <h2 className="text-center text-xs font-semibold uppercase tracking-[0.3em] text-ink/55">
+          Our Key Partners
+        </h2>
+
+        <div className="relative mt-9 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_7%,black_93%,transparent)]">
+          <ul className="flex w-max items-center gap-5 animate-marquee">
+            {row.map((p, i) => (
+              <li
+                key={`${p.name}-${i}`}
+                className="flex h-20 w-44 shrink-0 items-center justify-center rounded-2xl bg-white px-6 shadow-sm ring-1 ring-black/5"
               >
-                {p}
-              </span>
+                {p.logo ? (
+                  <img
+                    src={p.logo}
+                    alt={p.name}
+                    loading="lazy"
+                    className="max-h-11 w-auto object-contain"
+                  />
+                ) : (
+                  <span className="text-lg font-bold tracking-wide text-navy/60">{p.name}</span>
+                )}
+              </li>
             ))}
-          </div>
-        </Reveal>
+          </ul>
+        </div>
       </div>
     </section>
   )

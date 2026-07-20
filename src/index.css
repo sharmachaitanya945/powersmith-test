@@ -74,6 +74,55 @@ h4 {
   transform: translateY(0);
 }
 
+/* Hero slideshow: slow continuous Ken Burns drift on each slide */
+@keyframes kenburns {
+  0% {
+    transform: scale(1.06) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.15) translate(-1.5%, -1.5%);
+  }
+}
+.animate-kenburns {
+  animation: kenburns 20s ease-in-out infinite alternate;
+}
+
+/* Hero content: staggered slide-in from the left on load */
+@keyframes heroIn {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.hero-in {
+  animation: heroIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Partner logo marquee (Our Key Partners) */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 34s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-kenburns,
+  .hero-in,
+  .animate-marquee {
+    animation: none;
+  }
+}
+
 /* Range slider styling for the savings calculator */
 input[type='range'] {
   -webkit-appearance: none;

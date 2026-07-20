@@ -20,3 +20,7 @@ Powersmith_Solar_SEO_Audit_May2026*.pdf
 PowerSmith-Website-Roadmap.csv
 PowerSmith-New-Website-Requirements.csv
 CLIENT-QUESTIONS.md
+# Working files used to build hero/partner assets (not shipped)
+hero-src/
+partner-src/
+orig.html

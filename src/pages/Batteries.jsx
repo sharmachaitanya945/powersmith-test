@@ -57,7 +57,7 @@ export default function Batteries() {
         </Reveal>
         <Reveal delay={150} className="order-1 lg:order-2">
           <span className="rounded-full border border-accent/50 bg-accent/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-accent">
-            Gold-Certified Installer
+            Authorized Enphase Partner
           </span>
           <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">
             <span className="text-accent">Enphase</span> battery systems

@@ -14,7 +14,11 @@
     <script>
       (function () {
         try {
-          var t = localStorage.getItem('ps-theme')
+          // ?theme=light|dark forces (and remembers) a theme — handy for
+          // sharing a specific look; otherwise use the saved or system theme.
+          var forced = new URLSearchParams(location.search).get('theme')
+          if (forced === 'light' || forced === 'dark') localStorage.setItem('ps-theme', forced)
+          var t = forced || localStorage.getItem('ps-theme')
           if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
           if (t === 'dark') document.documentElement.classList.add('dark')
         } catch (e) {}

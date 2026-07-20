@@ -71,11 +71,37 @@ export const company = {
   email: 'servicedesk@powersmithsolar.com',
 }
 
+// Who We Are / What We Do / How We Do — the three-up intro (ported from the
+// current site, phrased for our sales-agency model: partners handle install).
+export const whoWhatHow = [
+  {
+    title: 'Who We Are',
+    text: 'We are a veteran-owned company that helps homeowners and businesses transition to clean, sustainable energy.',
+  },
+  {
+    title: 'What We Do',
+    text: 'Solar panel systems, EV charging, electrical panel upgrades, solar-powered batteries, backup generators and commercial solar projects — a complete clean-energy lineup.',
+  },
+  {
+    title: 'How We Do It',
+    text: 'We partner with leading national installers, financiers and manufacturers to streamline your solar transition — from quote to switch-on.',
+  },
+]
+
 export const hero = {
-  image: pub.heroHome, // black panels on a California home (also the video poster)
-  // Muted, looping background clip (1080p, web-optimized). Falls back to the
-  // image above as the poster while it loads.
+  image: pub.heroHome, // black panels on a California home (fallback still)
+  // Muted, looping drone clip — kept as a fallback if `slides` is cleared.
   video: '/hero-video.mp4',
+  // Sunset→night slideshow (crossfades with a slow Ken Burns drift). When set,
+  // this takes priority over the video/image. Reorder or swap freely; two more
+  // shots are stashed in /hero-src if you want to rotate them in.
+  slides: [
+    '/hero/hero-1.webp', // home at golden sunset
+    '/hero/hero-2.webp', // rooftop panels in the last light
+    '/hero/hero-3.webp', // home at dusk, orange horizon
+    '/hero/hero-4.webp', // home at night, warm windows
+    '/hero/hero-5.webp', // inside — switching the lights on
+  ],
 }
 
 // Tesla-style 3-icon benefit row ("Save on Electricity Bills")
@@ -243,7 +269,7 @@ export const steps = [
   { title: 'Check Your Proposal', text: 'Review a custom design built around your roof, shading, usage and budget — most designs ready in 24–72 hours.' },
   { title: 'Pick the Best Deal', text: 'Purchase, loan or lease — we match you with the best financing from trusted national partners.' },
   { title: 'Site Survey & Permits', text: 'A technician photographs your roof, meter and panel; we handle every permit and utility form for you.' },
-  { title: 'Installation', text: 'Certified crews install most home systems in a single day — backed by a 60-day timeline guarantee.' },
+  { title: 'Installation', text: 'Our certified install partners complete most home systems in a single day — backed by a 60-day timeline guarantee.' },
   { title: 'Permission to Operate', text: 'Your utility authorizes the connection, your system turns ON — under 30 days on average, contract to PTO.' },
 ]
 
@@ -259,15 +285,17 @@ export const comparison = {
   ],
 }
 
+// "Our Key Partners" — real logos pulled from powersmithsolar.com. `logo` is a
+// white-chip-safe image; the section falls back to `name` if a logo is missing.
 export const partners = [
-  'Tesla',
-  'Enphase',
-  'Q Cells',
-  'Generac',
-  'Goodleap',
-  'Sunlight',
-  'LightReach',
-  'One Ethos',
+  { name: 'Tesla', logo: '/partners/tesla.png' },
+  { name: 'Enphase', logo: '/partners/enphase.png' },
+  { name: 'Q CELLS', logo: '/partners/qcells.png' },
+  { name: 'Generac', logo: '/partners/generac.png' },
+  { name: 'GoodLeap', logo: '/partners/goodleap.png' },
+  { name: 'Sunlight Financial', logo: '/partners/sunlight.png' },
+  { name: 'LightReach', logo: '/partners/lightreach.png' },
+  { name: 'Syngenic', logo: '/partners/syngenic.png' },
 ]
 
 // Google reviews summary + real reviews from the live powersmithsolar.com site
@@ -473,8 +501,8 @@ export const batteries = {
     image: pub.teslaBattery,
   },
   enphase: {
-    title: 'Enphase Gold-Certified Installer',
-    text: 'PowerSmith is an Enphase Battery Gold-Certified Installer. Enphase puts a microinverter under each solar panel for maximum performance, with reliable backup power and full control of your system from an app — or fully on autopilot. Beat Time-of-Use rates by storing excess energy for later.',
+    title: 'Enphase Authorized Partner',
+    text: 'As an authorized Enphase partner, we match you with Enphase battery storage. Enphase puts a microinverter under each solar panel for maximum performance, with reliable backup power and full control of your system from an app — or fully on autopilot. Beat Time-of-Use rates by storing excess energy for later.',
     image: imgBattery,
   },
   nem3: {
@@ -579,7 +607,7 @@ export const seo = {
   batteries: {
     title: 'Solar Batteries: Tesla Powerwall & Enphase | San Diego',
     description:
-      'Enphase Gold-Certified installer. Tesla Powerwall, Enphase & Franklin batteries for San Diego. Beat NEM 3.0 and TOU rates — up to 90% bill offset.',
+      'Authorized Enphase partner. Tesla Powerwall, Enphase & Franklin batteries for San Diego. Beat NEM 3.0 and TOU rates — up to 90% bill offset.',
   },
   itc: {
     title: 'Solar Tax Credits & ITC Benefits in California | PowerSmith',
