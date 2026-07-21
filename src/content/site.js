@@ -100,6 +100,12 @@ export const whoWhatHow = [
 //   4. Powering Homes & Businesses.  /  Freedom From Rising Rates.
 //   5. Your Energy.  /  Your Control.
 //   6. Stop Renting Your Power.  /  Start Controlling It.
+//
+// Commercial alternatives:
+//   1. Power Your Business.  /  Cut Your Operating Costs.   ← current
+//   2. Power Your Business.  /  Control Your Overhead.
+//   3. Energy That Works  /  As Hard As You Do.
+//   4. Your Biggest Fixed Cost.  /  Now Under Your Control.
 export const taglines = {
   hero: { lead: 'Power Your Home or Business.', accent: 'Take Control of Your Energy.' },
   // Retired main tagline — reused on the Residential page.

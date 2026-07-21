@@ -26,12 +26,15 @@ export default function WhoWhatHow() {
       <div className="grid gap-6 md:grid-cols-3">
         {whoWhatHow.map((c, i) => (
           <Reveal key={c.title} delay={i * 120}>
-            <div className="flex h-full flex-col rounded-3xl border border-line/10 bg-card p-9 shadow-sm transition hover:border-accent/40 hover:shadow-lg hover:shadow-navy/5">
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/10 text-accent">
-                <span className="block h-6 w-6">{icons[i]}</span>
-              </span>
-              <h3 className="mt-6 text-2xl font-bold">{c.title}</h3>
-              <p className="mt-3 leading-relaxed text-ink/70">{c.text}</p>
+            <div className="flex h-full flex-col rounded-3xl border border-line/10 bg-card p-8 shadow-sm transition hover:border-accent/40 hover:shadow-lg hover:shadow-navy/5 sm:p-9">
+              {/* Icon and title share one line so the copy gets the box */}
+              <div className="flex items-center gap-4">
+                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-accent/10 text-accent">
+                  <span className="block h-7 w-7">{icons[i]}</span>
+                </span>
+                <h3 className="text-2xl font-bold leading-tight sm:text-[1.65rem]">{c.title}</h3>
+              </div>
+              <p className="mt-6 text-lg leading-relaxed text-ink/75">{c.text}</p>
             </div>
           </Reveal>
         ))}

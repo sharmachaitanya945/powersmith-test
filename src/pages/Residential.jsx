@@ -66,9 +66,9 @@ export default function Residential() {
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {residentialWhy.map((item, i) => (
             <Reveal key={item.title} delay={(i % 3) * 100}>
-              <div className="flex h-full flex-col rounded-2xl border border-line/10 bg-mist p-7 transition hover:border-accent/40">
-                <h3 className="font-bold text-heading">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink/70">{item.text}</p>
+              <div className="flex h-full flex-col rounded-2xl border border-line/10 bg-mist p-8 transition hover:border-accent/40">
+                <h3 className="text-xl font-bold text-heading">{item.title}</h3>
+                <p className="mt-3 text-base leading-relaxed text-ink/75">{item.text}</p>
               </div>
             </Reveal>
           ))}
@@ -91,9 +91,9 @@ export default function Residential() {
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {beforeYouGo.map((item, i) => (
             <Reveal key={item.title} delay={(i % 3) * 100}>
-              <div className="h-full rounded-2xl border border-line/10 bg-card p-7 shadow-sm transition hover:border-accent/40">
-                <h3 className="font-bold text-heading">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink/70">{item.text}</p>
+              <div className="h-full rounded-2xl border border-line/10 bg-card p-8 shadow-sm transition hover:border-accent/40">
+                <h3 className="text-xl font-bold text-heading">{item.title}</h3>
+                <p className="mt-3 text-base leading-relaxed text-ink/75">{item.text}</p>
               </div>
             </Reveal>
           ))}

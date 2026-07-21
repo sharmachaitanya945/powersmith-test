@@ -11,10 +11,10 @@ export default function PageHero({ title, highlight, subtitle, image, imageAlt, 
       >
         <img src={image} alt={imageAlt || ''} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/70 to-navy/85" />
-        <div className="relative z-10 mx-auto max-w-3xl px-5">
+        <div className={`relative z-10 mx-auto px-5 ${feature ? 'max-w-4xl' : 'max-w-3xl'}`}>
           <h1
             className={`font-bold leading-[1.08] tracking-tight text-white ${
-              feature ? 'hero-in text-4xl sm:text-5xl lg:text-6xl' : 'text-4xl sm:text-5xl'
+              feature ? 'hero-in text-4xl sm:text-5xl lg:text-[3.4rem]' : 'text-4xl sm:text-5xl'
             }`}
           >
             {title}

@@ -3,7 +3,7 @@ import Reveal from '../components/Reveal'
 import Partners from '../sections/Partners'
 import LeadForm from '../sections/LeadForm'
 import Seo from '../components/Seo'
-import { commercial, seo } from '../content/site'
+import { commercial, seo, taglines } from '../content/site'
 
 // Modern line icons for "Industries we serve" (replaces the old PNG glyphs).
 const industryIcons = {
@@ -70,8 +70,9 @@ export default function Commercial() {
     <>
       <Seo title={seo.commercial.title} description={seo.commercial.description} path="/commercial" />
       <PageHero
-        title="Commercial"
-        highlight="solar"
+        feature
+        title={taglines.commercial.lead}
+        highlight={taglines.commercial.accent}
         subtitle={commercial.intro}
         image={commercial.heroImage}
         imageAlt="PowerSmith commercial solar carport installation"
@@ -110,9 +111,9 @@ export default function Commercial() {
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {commercial.benefits.map((b, i) => (
               <Reveal key={b.title} delay={(i % 4) * 100}>
-                <div className="flex h-full flex-col rounded-2xl border border-line/10 bg-card p-7 shadow-sm">
-                  <h3 className="font-bold text-heading">{b.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink/70">{b.text}</p>
+                <div className="flex h-full flex-col rounded-2xl border border-line/10 bg-card p-8 shadow-sm">
+                  <h3 className="text-xl font-bold text-heading">{b.title}</h3>
+                  <p className="mt-3 text-base leading-relaxed text-ink/75">{b.text}</p>
                 </div>
               </Reveal>
             ))}
@@ -223,9 +224,9 @@ export default function Commercial() {
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {commercial.competencies.map((c, i) => (
               <Reveal key={c.title} delay={(i % 3) * 100}>
-                <div className="h-full rounded-2xl border border-line/10 bg-card p-7 shadow-sm">
-                  <h3 className="font-bold text-heading">{c.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink/70">{c.text}</p>
+                <div className="h-full rounded-2xl border border-line/10 bg-card p-8 shadow-sm">
+                  <h3 className="text-xl font-bold text-heading">{c.title}</h3>
+                  <p className="mt-3 text-base leading-relaxed text-ink/75">{c.text}</p>
                 </div>
               </Reveal>
             ))}
