@@ -4,7 +4,6 @@ import { company, nav } from '../content/site'
 import ThemeToggle from './ThemeToggle'
 import logoNavy from '../assets/logo-navy.png'
 import logoWhite from '../assets/logo-white.png'
-import veteranFlag from '../assets/veteran-flag.png'
 
 // Internal portals (separate GHL-hosted apps).
 const SALES_PORTAL = 'https://solar.powersmithsolar.com/home-7406'
@@ -26,10 +25,10 @@ export default function Navbar() {
   }, [])
 
   const navLinkClass = ({ isActive }) =>
-    `relative whitespace-nowrap py-1 text-[13px] font-semibold tracking-tight transition-colors after:absolute after:-bottom-0.5 after:left-0 after:h-0.5 after:w-full after:origin-left after:rounded-full after:bg-accent after:transition-transform after:duration-300 ${
+    `relative whitespace-nowrap py-1 text-[15px] font-semibold tracking-tight transition-colors after:absolute after:-bottom-0.5 after:left-0 after:h-0.5 after:w-full after:origin-left after:rounded-full after:bg-accent after:transition-transform after:duration-300 ${
       isActive
         ? 'text-accent after:scale-x-100'
-        : 'text-ink/80 after:scale-x-0 hover:text-accent hover:after:scale-x-100 dark:text-white/85 dark:hover:text-white'
+        : 'text-heading after:scale-x-0 hover:text-accent hover:after:scale-x-100 dark:text-white dark:hover:text-accent'
     }`
 
   return (
@@ -71,21 +70,13 @@ export default function Navbar() {
             href={SALES_PORTAL}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden whitespace-nowrap rounded-full border border-line/25 px-3 py-2 text-[13px] font-semibold text-heading transition hover:border-accent hover:text-accent dark:border-white/30 dark:text-white dark:hover:border-white dark:hover:bg-white/10 2xl:inline-flex"
+            className="hidden whitespace-nowrap rounded-full border border-line/25 px-3 py-2 text-[13px] font-semibold text-heading transition hover:border-accent hover:text-accent dark:border-white/30 dark:text-white dark:hover:border-white dark:hover:bg-white/10 lg:inline-flex"
           >
-            Sales Rep Portal
+            Rep Portal
           </a>
           <Link to="/contact" className="btn-primary hidden px-5 py-2 text-sm sm:inline-flex">
             Get a Quote
           </Link>
-
-          {/* Veteran-owned flag — sits apart from the wordmark, by the theme toggle */}
-          <img
-            src={veteranFlag}
-            alt="Veteran Owned"
-            title="Veteran-Owned & Operated"
-            className="hidden h-7 w-auto sm:block"
-          />
 
           <ThemeToggle />
 

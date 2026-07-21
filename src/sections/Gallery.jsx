@@ -43,7 +43,7 @@ export default function Gallery() {
                   type="button"
                   onClick={() => scrollByCards(dir)}
                   aria-label={dir === -1 ? 'Previous photos' : 'Next photos'}
-                  className="flex h-12 w-12 items-center justify-center rounded-full border border-white/25 text-white transition hover:border-white/60 hover:bg-white/10"
+                  className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-white/60 bg-white/10 text-white shadow-lg transition hover:border-accent hover:bg-accent hover:text-white"
                 >
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
                     <path

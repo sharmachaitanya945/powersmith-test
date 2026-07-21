@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { company, hero } from '../content/site'
-import VeteranBadge from '../components/VeteranBadge'
+import { company, hero, taglines } from '../content/site'
+import veteranFlag from '../assets/veteran-flag.png'
 
-// Cinematic hero: a left-aligned message that slides in over a crossfading,
-// slowly drifting slideshow of PowerSmith homes (sunset → night). Falls back to
-// the drone video, then a still image, if `hero.slides` isn't set.
+// Cinematic hero: a left-aligned message that slides in from the left over a
+// crossfading, slowly drifting slideshow (sunset → night). Falls back to the
+// drone video, then a still image, if `hero.slides` isn't set.
+//
+// Per Anthony (Jul 21): the veteran flag is a large watermark on the side — big
+// enough to carry the veteran-owned signal on its own, so the old
+// "Veteran-Owned & Operated" pill is gone.
 export default function Hero() {
   const slides = hero.slides || []
   const [idx, setIdx] = useState(0)
@@ -40,9 +44,6 @@ export default function Hero() {
           loop
           playsInline
           poster={hero.image}
-          onLoadedMetadata={(e) => {
-            e.currentTarget.playbackRate = 0.5
-          }}
         >
           <source src={hero.video} type="video/mp4" />
         </video>
@@ -60,26 +61,43 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-transparent" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/25" />
 
+      {/* Veteran-owned flag — large watermark on the right. It sits on a navy
+          plate because the star and stripe gaps are knockouts: over a busy photo
+          they'd show the image through and read muddy. */}
+      <div className="pointer-events-none absolute right-5 top-1/2 z-[5] hidden -translate-y-1/2 rounded-2xl bg-navy/60 p-5 shadow-2xl shadow-black/40 ring-1 ring-white/10 backdrop-blur-sm sm:block lg:right-12">
+        <img
+          src={veteranFlag}
+          alt="Veteran Owned & Operated"
+          className="w-40 sm:w-48 lg:w-60 xl:w-64"
+        />
+      </div>
+
       {/* Content — left aligned, staggered slide-in */}
       <div className="relative z-10 mx-auto w-full max-w-wrap px-5">
-        <div className="max-w-2xl text-left [text-shadow:0_2px_20px_rgba(0,0,0,0.55)]">
-          <div className="hero-in" style={{ animationDelay: '0.05s' }}>
-            <VeteranBadge className="!px-5 !py-2.5 !text-sm" />
-          </div>
+        <div className="max-w-4xl text-left [text-shadow:0_2px_20px_rgba(0,0,0,0.55)]">
+          <p
+            className="hero-in text-sm font-bold uppercase tracking-[0.28em] text-white/90 sm:text-base"
+            style={{ animationDelay: '0.05s' }}
+          >
+            PowerSmith <span className="text-accent">Energy</span>
+          </p>
+
           <h1
-            className="hero-in mt-6 text-5xl font-bold leading-[1.02] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-[5.25rem]"
+            className="hero-in mt-5 text-[2.1rem] font-bold leading-[1.08] tracking-tight text-white sm:text-[2.7rem] md:text-[3rem] lg:text-[3.4rem]"
             style={{ animationDelay: '0.18s' }}
           >
-            Power Your Home.
+            {taglines.hero.lead}
             <br />
-            <span className="text-accent">Own Your Energy.</span>
+            <span className="text-accent">{taglines.hero.accent}</span>
           </h1>
+
           <p
             className="hero-in mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg"
             style={{ animationDelay: '0.32s' }}
           >
             {company.subline}
           </p>
+
           <div
             className="hero-in mt-9 flex flex-col gap-4 sm:flex-row"
             style={{ animationDelay: '0.46s' }}

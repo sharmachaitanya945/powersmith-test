@@ -1,14 +1,27 @@
 import PageHero from '../components/PageHero'
 import Seo from '../components/Seo'
 import Reveal from '../components/Reveal'
-import { seo, residentialServices, residentialWhy, pub } from '../content/site'
+import {
+  seo,
+  residentialServices,
+  residentialWhy,
+  batteries,
+  solarInsure,
+  taglines,
+  pub,
+} from '../content/site'
 import Services from '../sections/Services'
 import Savings from '../sections/Savings'
 import HowItWorks from '../sections/HowItWorks'
+import Comparison from '../sections/Comparison'
 import Gallery from '../sections/Gallery'
 import Faq from '../sections/Faq'
 import LeadForm from '../sections/LeadForm'
 
+// Anthony (Jul 21): residential should carry the retired "Power Your Home. Own
+// Your Energy." tagline on a bigger slide-in hero, then the roadmap, benefits,
+// the NEM 2.0/3.0 explainer and what Solar Insure actually covers. The solar
+// journey and solar-vs-grid table moved here off the homepage.
 export default function Residential() {
   return (
     <>
@@ -19,9 +32,10 @@ export default function Residential() {
       />
 
       <PageHero
-        title="Residential"
-        highlight="solar"
-        subtitle="Premium all-black panels, battery storage and EV charging for your home — $0-down options, a 30-year warranty, and installs in under 30 days on average."
+        feature
+        title={taglines.residential.lead}
+        highlight={taglines.residential.accent}
+        subtitle="Premium all-black panels, battery storage and EV charging for your home — $0-down options, a 30-year warranty, and power-on in under 30 days on average."
         image={pub.heroHome}
         imageAlt="Aerial view of a PowerSmith solar installation on a California home"
       />
@@ -34,7 +48,7 @@ export default function Residential() {
             Everything your <span className="text-accent">home</span> needs
           </>
         }
-        intro="Solar, storage, EV charging, backup power and panel upgrades — designed and installed as one seamless system for your home."
+        intro="Solar, storage, EV charging, backup power and panel upgrades — designed and delivered as one seamless system for your home."
       />
 
       {/* Why homeowners choose us */}
@@ -59,8 +73,86 @@ export default function Residential() {
         </div>
       </section>
 
-      <Savings />
       <HowItWorks />
+
+      {/* What you should know before going solar — NEM 3.0 in California */}
+      <section className="border-y border-line/10 bg-mist-50 py-24">
+        <div className="mx-auto grid max-w-wrap items-center gap-12 px-5 lg:grid-cols-2">
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">
+              Know before you go solar
+            </p>
+            <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+              {batteries.nem3.title}
+            </h2>
+            <p className="mt-4 leading-relaxed text-ink/70">
+              California&apos;s billing rules changed. Here is what NEM 3.0 means for a new system —
+              and why pairing solar with a battery matters more than it used to.
+            </p>
+          </Reveal>
+          <Reveal delay={150}>
+            <ul className="space-y-4">
+              {batteries.nem3.points.map((p) => (
+                <li
+                  key={p}
+                  className="flex items-start gap-3 rounded-2xl border border-line/10 bg-card p-5"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    className="mt-0.5 h-5 w-5 shrink-0 text-accent"
+                  >
+                    <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  <span className="text-sm leading-relaxed text-ink/75">{p}</span>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </div>
+      </section>
+
+      <Savings />
+      <Comparison />
+
+      {/* What is Solar Insure — the warranty explained, not just the badge */}
+      <section className="mx-auto max-w-wrap px-5 py-24">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <Reveal>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              What is <span className="text-accent">Solar Insure?</span>
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-ink/70">{solarInsure.intro}</p>
+            <img
+              src="/badges/solar-insure.png"
+              alt="Solar Insure — 30-year insurance-backed warranty, 2026"
+              loading="lazy"
+              className="mt-8 h-28 w-auto"
+            />
+          </Reveal>
+          <Reveal delay={150}>
+            <ul className="space-y-4">
+              {solarInsure.points.map((p) => (
+                <li key={p} className="flex items-start gap-3">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    className="mt-0.5 h-5 w-5 shrink-0 text-accent"
+                  >
+                    <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  <span className="leading-relaxed text-ink/75">{p}</span>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </div>
+      </section>
+
       <Gallery />
       <Faq />
       <LeadForm />

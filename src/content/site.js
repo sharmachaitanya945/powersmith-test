@@ -88,6 +88,41 @@ export const whoWhatHow = [
   },
 ]
 
+// Headline taglines. Brief (Anthony, Jul 21): the main line must cover home AND
+// business, and must avoid "own" — plenty of systems are leased. His steer was
+// "control your energy" / "freedom from". Swap `hero` to any alternative below and
+// the homepage headline follows.
+//
+// Alternatives for review:
+//   1. Power Your Home or Business.  /  Take Control of Your Energy.   ← current
+//   2. Take Control of Your Energy.  /  Home. Business. Powered.
+//   3. Energy Freedom  /  For Every Home & Business.
+//   4. Powering Homes & Businesses.  /  Freedom From Rising Rates.
+//   5. Your Energy.  /  Your Control.
+//   6. Stop Renting Your Power.  /  Start Controlling It.
+export const taglines = {
+  hero: { lead: 'Power Your Home or Business.', accent: 'Take Control of Your Energy.' },
+  // Retired main tagline — reused on the Residential page.
+  residential: { lead: 'Power Your Home.', accent: 'Own Your Energy.' },
+  commercial: { lead: 'Power Your Business.', accent: 'Cut Your Operating Costs.' },
+}
+
+// "What is Solar Insure?" — Anthony wants the warranty explained on the
+// Residential page, not just shown as a badge. Solar Insure is a third-party
+// warranty; it is separate from any dealer/installer credential.
+export const solarInsure = {
+  title: 'What is Solar Insure?',
+  intro:
+    'Solar Insure is an independent, insurance-backed warranty that sits on top of your manufacturer coverage — so your system stays protected even if an installer or manufacturer is no longer in business.',
+  points: [
+    '30 years of monitoring and coverage — the longest, broadest protection available.',
+    'Covers panels, inverters, optimizers and racking.',
+    'Includes one replacement battery.',
+    'Backs your manufacturer coverage, so a claim does not stall if a company changes hands.',
+    'Your system is monitored, so problems are caught before you notice them.',
+  ],
+}
+
 export const hero = {
   image: pub.heroHome, // black panels on a California home (fallback still)
   // Muted, looping drone clip — kept as a fallback if `slides` is cleared.

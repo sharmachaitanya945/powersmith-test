@@ -6,7 +6,7 @@ import Reveal from '../components/Reveal'
 export default function Services({
   items = services,
   heading,
-  intro = 'Solar, storage, EV charging and backup power — designed and installed as one seamless system.',
+  intro = 'Solar, storage, EV charging, backup power and panel upgrades for homes and businesses — designed and delivered as one seamless system.',
 }) {
   return (
     <section id="services" className="border-y border-white/10 bg-panel py-24">
@@ -15,7 +15,8 @@ export default function Services({
         <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">
           {heading || (
             <>
-              Everything your home needs to <span className="text-accent">go electric</span>
+              Everything your home and business need to{' '}
+              <span className="text-accent">go electric</span>
             </>
           )}
         </h2>
