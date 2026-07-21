@@ -120,6 +120,36 @@ export default function Commercial() {
         </div>
       </section>
 
+      {/* EV charging + energy storage — commercial-specific offerings */}
+      <section className="mx-auto max-w-wrap px-5 py-20">
+        <div className="grid gap-6 lg:grid-cols-2">
+          {commercial.solutions.map((s, i) => (
+            <Reveal key={s.title} delay={i * 120}>
+              <div className="flex h-full flex-col rounded-3xl border border-line/10 bg-mist p-8">
+                <h3 className="text-2xl font-bold">{s.title}</h3>
+                <p className="mt-3 leading-relaxed text-ink/70">{s.text}</p>
+                <ul className="mt-6 space-y-3">
+                  {s.points.map((p) => (
+                    <li key={p} className="flex items-start gap-3">
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        className="mt-0.5 h-5 w-5 shrink-0 text-accent"
+                      >
+                        <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      <span className="text-sm leading-relaxed text-ink/75">{p}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
       {/* Industries served — real category icons from the live site */}
       <section className="border-y border-white/10 bg-panel py-20">
         <div className="mx-auto max-w-wrap px-5">
@@ -182,19 +212,24 @@ export default function Commercial() {
         </div>
       </section>
 
-      {/* Core competencies */}
-      <section className="border-y border-white/10 bg-panel py-16">
+      {/* Core competencies — what we bring to a commercial project */}
+      <section className="border-y border-white/10 bg-panel py-20">
         <div className="mx-auto max-w-wrap px-5">
-          <Reveal className="flex flex-wrap items-center justify-center gap-3">
-            {commercial.competencies.map((c) => (
-              <span
-                key={c}
-                className="rounded-full border border-white/20 px-5 py-2 text-sm font-medium text-white/75"
-              >
-                {c}
-              </span>
-            ))}
+          <Reveal className="text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">
+              Our core <span className="text-accent">competencies</span>
+            </h2>
           </Reveal>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {commercial.competencies.map((c, i) => (
+              <Reveal key={c.title} delay={(i % 3) * 100}>
+                <div className="h-full rounded-2xl border border-line/10 bg-card p-7 shadow-sm">
+                  <h3 className="font-bold text-heading">{c.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink/70">{c.text}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 

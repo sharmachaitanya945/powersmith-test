@@ -107,6 +107,45 @@ export const taglines = {
   commercial: { lead: 'Power Your Business.', accent: 'Cut Your Operating Costs.' },
 }
 
+// "Things you should know before going solar" — ported from the live
+// /residential page, reworded for our sales-agency voice (partners install).
+export const beforeYouGo = [
+  {
+    title: 'Your roof type',
+    text: 'Our install partners work with any roof type. Methods vary, but every system comes with a 10-year roof penetration warranty.',
+  },
+  {
+    title: 'Your roof condition',
+    text: 'Taking panels off later is costly, so your roof is assessed up front and you are told if repairs are needed before installation.',
+  },
+  {
+    title: 'Your financing options',
+    text: 'Cash purchase, loan, or a PPA (power purchase agreement) — we match you with the option that fits your goals.',
+  },
+  {
+    title: 'Types of solar panels',
+    text: 'Manufacturers differ in cost and efficiency. Ask which panel types are on the table so you can make an informed choice.',
+  },
+  {
+    title: 'Shading',
+    text: 'Panels need direct sunlight to produce. Trees or other obstructions that cast shade will reduce system performance.',
+  },
+  {
+    title: 'Location',
+    text: 'Like fuel prices, cost per watt varies by state. An independent authorized dealer can tell you what it costs where you live.',
+  },
+]
+
+// Completed residential systems — size + city, which Anthony asked for so the
+// work is identifiable. Taken from "Most Recent Projects" on the live site.
+export const residentialProjects = [
+  { city: 'Canyon Lake', size: '9 kW' },
+  { city: 'Laguna', size: '13.6 kW' },
+  { city: 'Redlands', size: '12 kW' },
+  { city: 'Riverside', size: '6 kW' },
+  { city: 'Temecula', size: '12 kW' },
+]
+
 // "What is Solar Insure?" — Anthony wants the warranty explained on the
 // Residential page, not just shown as a badge. Solar Insure is a third-party
 // warranty; it is separate from any dealer/installer credential.
@@ -452,13 +491,53 @@ export const commercial = {
     '100% federal year-1 depreciation',
     'Custom financing built around your business',
   ],
+  // Core competencies — ported from the live /commercial page (typos fixed).
   competencies: [
-    'Technical Expertise',
-    'Customer Service',
-    'Industry Experience',
-    'Financial Expertise',
-    'Product Knowledge',
-    'Project Management',
+    {
+      title: 'Technical Expertise',
+      text: 'Design and implementation of commercial-scale solar energy systems with cutting-edge solutions.',
+    },
+    {
+      title: 'Customer Service',
+      text: 'Personalized attention, transparent communication and responsive support for a smooth, hassle-free experience.',
+    },
+    {
+      title: 'Industry Experience',
+      text: 'Delivering exceptional results within timeline and budget — built to exceed expectations.',
+    },
+    {
+      title: 'Financial Expertise',
+      text: 'Comprehensive analysis and guidance through incentives, tax credits and financing options for solar investments.',
+    },
+    {
+      title: 'Product Knowledge',
+      text: 'Premium panels, inverters and energy storage from reputable manufacturers.',
+    },
+    {
+      title: 'Project Management',
+      text: 'Seamless coordination of commercial solar projects end to end, with our install partners.',
+    },
+  ],
+  // Commercial-specific offerings from the live page
+  solutions: [
+    {
+      title: 'Electric Vehicle Chargers',
+      text: 'EV charging stations can add a revenue stream and improve tenant, employee and customer satisfaction. Utility rebates are available to help offset the cost of the infrastructure.',
+      points: [
+        'Generate revenue from energy sales',
+        'Attract tenants, employees and customers',
+        'Utility rebates available',
+      ],
+    },
+    {
+      title: 'Energy Storage Systems',
+      text: 'Storage provides emergency backup power alongside significant utility-bill savings. Many of the same tax incentives that apply to solar also apply to storage, with extra rebates for systems that meet certain criteria.',
+      points: [
+        'Savings through demand-charge reduction and energy arbitrage',
+        'Resiliency during power outages',
+        'Tax incentives and rebates available',
+      ],
+    },
   ],
   industries: [
     { name: 'Warehouses', key: 'warehouse' },

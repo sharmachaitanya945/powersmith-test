@@ -5,6 +5,8 @@ import {
   seo,
   residentialServices,
   residentialWhy,
+  beforeYouGo,
+  residentialProjects,
   batteries,
   solarInsure,
   taglines,
@@ -74,6 +76,29 @@ export default function Residential() {
       </section>
 
       <HowItWorks />
+
+      {/* Things you should know before going solar — ported from the live site */}
+      <section className="mx-auto max-w-wrap px-5 py-24">
+        <Reveal className="text-center">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            Things you should know <span className="text-accent">before going solar</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-ink/70">
+            The details that actually change your quote — worth understanding before you sign
+            anything.
+          </p>
+        </Reveal>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {beforeYouGo.map((item, i) => (
+            <Reveal key={item.title} delay={(i % 3) * 100}>
+              <div className="h-full rounded-2xl border border-line/10 bg-card p-7 shadow-sm transition hover:border-accent/40">
+                <h3 className="font-bold text-heading">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink/70">{item.text}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
 
       {/* What you should know before going solar — NEM 3.0 in California */}
       <section className="border-y border-line/10 bg-mist-50 py-24">
@@ -150,6 +175,30 @@ export default function Residential() {
               ))}
             </ul>
           </Reveal>
+        </div>
+      </section>
+
+      {/* Recent residential systems — size + city, so the work is identifiable */}
+      <section className="border-y border-line/10 bg-mist-50 py-20">
+        <div className="mx-auto max-w-wrap px-5">
+          <Reveal className="text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              Recent <span className="text-accent">projects</span>
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-ink/65">
+              A sample of recently completed residential systems across Southern California.
+            </p>
+          </Reveal>
+          <div className="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5">
+            {residentialProjects.map((p, i) => (
+              <Reveal key={p.city} delay={(i % 5) * 80}>
+                <div className="rounded-2xl border border-line/10 bg-card p-6 text-center shadow-sm">
+                  <div className="text-2xl font-extrabold text-accent">{p.size}</div>
+                  <div className="mt-1 text-sm font-medium text-heading">{p.city}</div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
