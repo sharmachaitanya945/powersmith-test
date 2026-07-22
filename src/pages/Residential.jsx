@@ -1,15 +1,18 @@
 import PageHero from '../components/PageHero'
 import Seo from '../components/Seo'
 import Reveal from '../components/Reveal'
+import VideoEmbed from '../components/VideoEmbed'
 import {
   seo,
   residentialServices,
   residentialWhy,
   beforeYouGo,
   residentialProjects,
+  residentialFamily,
   batteries,
   solarInsure,
   taglines,
+  trustVideos,
   pub,
 } from '../content/site'
 import Services from '../sections/Services'
@@ -42,6 +45,37 @@ export default function Residential() {
         imageAlt="Aerial view of a PowerSmith solar installation on a California home"
       />
 
+      {/* Real families, real energy independence */}
+      <section className="mx-auto max-w-wrap px-5 py-20">
+        <Reveal className="text-center">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            Real families. <span className="text-accent">Real energy independence.</span>
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-ink/65">
+            Solar isn&apos;t just panels on a roof — it&apos;s a home that runs on its own power,
+            morning to night.
+          </p>
+        </Reveal>
+        <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-5">
+          {residentialFamily.map((f, i) => (
+            <Reveal
+              key={f.src}
+              delay={(i % 4) * 90}
+              className={i === 0 ? 'col-span-2 row-span-2' : ''}
+            >
+              <img
+                src={f.src}
+                alt={f.alt}
+                loading="lazy"
+                className={`h-full w-full rounded-2xl border border-line/10 object-cover shadow-sm ${
+                  i === 0 ? 'aspect-square sm:aspect-auto sm:h-full' : 'aspect-square'
+                }`}
+              />
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
       {/* Residential-only offering (no commercial card here) */}
       <Services
         items={residentialServices}
@@ -72,6 +106,27 @@ export default function Residential() {
               </div>
             </Reveal>
           ))}
+        </div>
+      </section>
+
+      {/* The PowerSmith Difference — trust video (Anthony, Jul 21/22 review) */}
+      <section className="border-y border-line/10 bg-mist-50 py-24">
+        <div className="mx-auto grid max-w-wrap items-center gap-12 px-5 lg:grid-cols-2">
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">
+              Watch
+            </p>
+            <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+              The PowerSmith <span className="text-accent">Difference</span>
+            </h2>
+            <p className="mt-4 leading-relaxed text-ink/70">
+              A veteran-owned team, real installs and a process built around you — see what
+              working with PowerSmith actually looks like.
+            </p>
+          </Reveal>
+          <Reveal delay={150}>
+            <VideoEmbed videoId={trustVideos.difference.id} title={trustVideos.difference.title} />
+          </Reveal>
         </div>
       </section>
 

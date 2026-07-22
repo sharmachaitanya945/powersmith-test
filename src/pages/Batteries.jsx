@@ -1,8 +1,9 @@
 import PageHero from '../components/PageHero'
 import Reveal from '../components/Reveal'
+import VideoEmbed from '../components/VideoEmbed'
 import LeadForm from '../sections/LeadForm'
 import Seo from '../components/Seo'
-import { batteries, seo } from '../content/site'
+import { batteries, seo, trustVideos } from '../content/site'
 
 export default function Batteries() {
   return (
@@ -101,6 +102,26 @@ export default function Batteries() {
           </h2>
           <p className="mt-5 leading-relaxed text-ink/75">{batteries.backup.text}</p>
         </Reveal>
+      </section>
+
+      {/* Battery tour — Anthony (Jul 22): "a battery video about the Tesla and
+          Enphase could be helpful on this to help solidify that." */}
+      <section className="border-y border-white/10 bg-panel py-20">
+        <div className="mx-auto grid max-w-wrap items-center gap-12 px-5 lg:grid-cols-2">
+          <Reveal className="order-2 lg:order-1">
+            <VideoEmbed videoId={trustVideos.batteryTour.id} title={trustVideos.batteryTour.title} />
+          </Reveal>
+          <Reveal delay={150} className="order-1 lg:order-2">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Watch</p>
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              See a <span className="text-accent">battery in action</span>
+            </h2>
+            <p className="mt-4 leading-relaxed text-white/65">
+              A closer look at Tesla Powerwall backup — how it keeps a home running, and how it
+              pairs with an Enphase system.
+            </p>
+          </Reveal>
+        </div>
       </section>
 
       <LeadForm />

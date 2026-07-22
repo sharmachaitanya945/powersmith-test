@@ -45,12 +45,34 @@ export const pub = {
   // Equipment / product shots
   teslaBattery: '/Tesla-Solar-Battery-1024x1024-1.webp', // real Tesla Powerwalls
   teslaCharging: '/tesla_100622512_h-1024x587.webp', // Tesla EV charging
+  generac20kw: '/products/generac-20kw.jpg', // Generac Protector 20kW standby generator
+  generacPwrcell: '/products/generac-pwrcell.png', // Generac PWRcell battery cabinet
+  mpu: '/products/mpu.jpg', // electrician upgrading a main electrical panel
   // Royalty-free stock (Pexels, free for commercial use) for the non-solar
   // service cards where drone shots don't fit the subject.
   backupGenerator: '/stock/backup-generator.jpg', // standby generator + inverters
   electricPanel: '/stock/electric-panel.jpg', // tech working a modern breaker panel
   systemUpgrade: '/stock/system-upgrade.jpg', // installer fitting a roof panel
 }
+
+// PowerSmith trust videos from Anthony's signature (per Jul 21/22 reviews):
+// Difference -> Residential, Referral -> About, Tesla/Enphase battery -> Batteries.
+// The existing homepage explainer (igdxnIdQIYs) is unchanged.
+export const trustVideos = {
+  difference: { id: 'i882QuUL2F0', title: 'The PowerSmith Difference' },
+  referral: { id: 'fKRC7a0KpDw', title: 'PowerSmith Referral Program' },
+  batteryTour: { id: 'agqtR6Hj3K8', title: 'Tesla Powerwall 3 — Cinematic Backup Solutions' },
+}
+
+// Family lifestyle photography for the Residential page (Anthony, Jul 21/22:
+// "I haven't seen any family in the residential side").
+export const residentialFamily = [
+  { src: '/family/family-1.webp', alt: 'Family and dog walking up to their solar-powered California home at dusk' },
+  { src: '/family/family-2.webp', alt: 'Family gathered for an evening backyard barbecue under a solar-paneled roofline' },
+  { src: '/family/family-3.webp', alt: 'Family having breakfast in a sunlit kitchen with solar panels visible outside' },
+  { src: '/family/family-4.webp', alt: 'Family playing soccer on the lawn in front of their solar-powered home at dusk' },
+  { src: '/family/family-5.webp', alt: 'Family relaxing together outside their solar-powered home at golden hour' },
+]
 export const solarInsureBadge = '/2023-Solar-Insure-Certified-Installer-Badge-1-1-1024x1024.png'
 export const authorizedDealerBadge = '/Banner-Posts-1024x371-1.webp' // white "Authorized Dealer" graphic
 
@@ -168,19 +190,16 @@ export const solarInsure = {
 }
 
 export const hero = {
-  image: pub.heroHome, // black panels on a California home (fallback still)
-  // Muted, looping drone clip — kept as a fallback if `slides` is cleared.
-  video: '/hero-video.mp4',
-  // Sunset→night slideshow (crossfades with a slow Ken Burns drift). When set,
-  // this takes priority over the video/image. Reorder or swap freely; two more
-  // shots are stashed in /hero-src if you want to rotate them in.
-  slides: [
-    '/hero/hero-1.webp', // home at golden sunset
-    '/hero/hero-2.webp', // rooftop panels in the last light
-    '/hero/hero-3.webp', // home at dusk, orange horizon
-    '/hero/hero-4.webp', // home at night, warm windows
-    '/hero/hero-5.webp', // inside — switching the lights on
-  ],
+  image: '/hero-poster.jpg', // poster frame + fallback for the edited hero video
+  // Chash's edited hero cut (logo + switch-on moment + DJI shots), per the
+  // Jul 21/22 reviews. `slides` is empty so the video plays; restore the
+  // sunset->night slideshow below any time by filling `slides` back in — the
+  // component prioritises slides > video > image.
+  video: '/hero-video-edited.mp4',
+  slides: [],
+  // Previous slideshow, kept here to restore in one line if needed:
+  // '/hero/hero-1.webp', '/hero/hero-2.webp', '/hero/hero-3.webp',
+  // '/hero/hero-4.webp', '/hero/hero-5.webp'
 }
 
 // Tesla-style 3-icon benefit row ("Save on Electricity Bills")
@@ -231,8 +250,7 @@ export const services = [
     title: 'Battery Storage',
     blurb:
       'Generac PWRcell, Tesla Powerwall, Enphase and more — store the sun and beat Time-of-Use rates.',
-    // TODO: swap to the official Generac PWRcell photo once Anthony sends it.
-    image: pub.teslaBattery,
+    image: pub.generacPwrcell,
     to: '/batteries',
   },
   {
@@ -244,14 +262,14 @@ export const services = [
   {
     title: 'Backup Generators',
     blurb: 'Whole-home backup for total peace of mind, seamlessly integrated with your solar system.',
-    image: pub.backupGenerator,
+    image: pub.generac20kw,
     to: '/contact',
   },
   {
     title: 'System Upgrades',
     blurb:
       'Already have solar? Add panels without losing NEM 1.0/2.0 status, expand storage, or upgrade your electric panel.',
-    image: pub.systemUpgrade,
+    image: pub.mpu,
     to: '/contact',
   },
 ]
@@ -269,7 +287,7 @@ export const residentialServices = [
     title: 'Battery Storage',
     blurb:
       'Generac PWRcell, Tesla Powerwall, Enphase, Franklin and SolarEdge. Store your own sunshine, beat Time-of-Use rates and keep the lights on in an outage.',
-    image: pub.teslaBattery,
+    image: pub.generacPwrcell,
     to: '/batteries',
   },
   {
@@ -283,14 +301,14 @@ export const residentialServices = [
     title: 'Backup Generators',
     blurb:
       'Whole-home backup for total peace of mind through wildfire-season outages, seamlessly integrated with your solar system.',
-    image: pub.backupGenerator,
+    image: pub.generac20kw,
     to: '/contact',
   },
   {
     title: 'System Upgrades',
     blurb:
       'Already have solar? Add panels without losing your NEM 1.0 or 2.0 status, expand storage, or modernise ageing equipment.',
-    image: pub.systemUpgrade,
+    image: pub.mpu,
     to: '/contact',
   },
   {
@@ -375,10 +393,8 @@ export const partners = [
   { name: 'GoodLeap', logo: '/partners/goodleap.png' },
   { name: 'Sunlight Financial', logo: '/partners/sunlight.png' },
   { name: 'LightReach', logo: '/partners/lightreach.png' },
-  // Per Anthony (Jul 22): EnFin in, Syngenic out. Logo lives on the sales-rep
-  // portal partners page — renders as a text chip until the file lands at
-  // /partners/enfin.png.
-  { name: 'EnFin', logo: null },
+  // Per Anthony (Jul 22): EnFin in, Syngenic out.
+  { name: 'EnFin', logo: '/partners/enfin.png' },
 ]
 
 // Google reviews summary + real reviews from the live powersmithsolar.com site
@@ -695,6 +711,7 @@ export const nav = [
   { label: 'Tax Credits', to: '/itc-benefits' },
   { label: 'Calculator', to: '/solar-calculator' },
   { label: 'About', to: '/about' },
+  { label: 'Blog', to: '/blog' },
   { label: 'FAQ', to: '/faq' },
 ]
 
@@ -809,7 +826,7 @@ export const footerLinks = [
   { label: 'FAQ', to: '/faq' },
   { label: 'Contact', to: '/contact' },
   { label: 'Solar Calculator', to: '/solar-calculator' },
-  { label: 'Blog', href: 'https://powersmithsolar.com/blog/' },
+  { label: 'Blog', to: '/blog' },
   { label: 'Affiliate Signup', href: 'https://powersmithsolar.com/affiliate-signup/' },
   { label: 'Privacy Policy', href: 'https://powersmithsolar.com/privacy-policy/' },
   { label: 'Terms of Use', href: 'https://powersmithsolar.com/terms-of-use/' },

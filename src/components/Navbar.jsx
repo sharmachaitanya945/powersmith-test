@@ -47,7 +47,7 @@ export default function Navbar() {
             <img src={logoWhite} alt="PowerSmith" className="hidden h-7 w-auto dark:block sm:h-8" />
           </Link>
 
-          <nav className="hidden items-center gap-3 xl:flex">
+          <nav className="hidden items-center gap-4 xl:flex">
             {nav.map((item) => (
               <NavLink key={item.to} to={item.to} className={navLinkClass}>
                 {item.label}
@@ -56,13 +56,15 @@ export default function Navbar() {
           </nav>
         </div>
 
-        {/* RIGHT — actions, then the veteran flag beside the theme toggle */}
-        <div className="flex shrink-0 items-center gap-2">
+        {/* RIGHT — actions, then the veteran flag beside the theme toggle.
+            No "Get a Quote" pill here — every nav link and portal button
+            already gets more breathing room without it (per Chash, Jul 23). */}
+        <div className="flex shrink-0 items-center gap-3">
           <a
             href={PORTAL_LOGIN}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden whitespace-nowrap rounded-full border border-line/25 px-3 py-2 text-[13px] font-semibold text-heading transition hover:border-accent hover:text-accent dark:border-white/30 dark:text-white dark:hover:border-white dark:hover:bg-white/10 lg:inline-flex"
+            className="hidden whitespace-nowrap rounded-full border border-line/25 px-4 py-2 text-sm font-semibold text-heading transition hover:border-accent hover:text-accent dark:border-white/30 dark:text-white dark:hover:border-white dark:hover:bg-white/10 lg:inline-flex"
           >
             Portal Login
           </a>
@@ -70,13 +72,10 @@ export default function Navbar() {
             href={SALES_PORTAL}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden whitespace-nowrap rounded-full border border-line/25 px-3 py-2 text-[13px] font-semibold text-heading transition hover:border-accent hover:text-accent dark:border-white/30 dark:text-white dark:hover:border-white dark:hover:bg-white/10 lg:inline-flex"
+            className="hidden whitespace-nowrap rounded-full border border-line/25 px-4 py-2 text-sm font-semibold text-heading transition hover:border-accent hover:text-accent dark:border-white/30 dark:text-white dark:hover:border-white dark:hover:bg-white/10 lg:inline-flex"
           >
             Rep Portal
           </a>
-          <Link to="/contact" className="btn-primary hidden px-5 py-2 text-sm sm:inline-flex">
-            Get a Quote
-          </Link>
 
           <ThemeToggle />
 

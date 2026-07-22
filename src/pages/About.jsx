@@ -1,11 +1,12 @@
 import PageHero from '../components/PageHero'
 import Reveal from '../components/Reveal'
 import VeteranBadge from '../components/VeteranBadge'
+import VideoEmbed from '../components/VideoEmbed'
 import Stats from '../sections/Stats'
 import Partners from '../sections/Partners'
 import LeadForm from '../sections/LeadForm'
 import Seo from '../components/Seo'
-import { company, values, team, seo } from '../content/site'
+import { company, values, team, seo, trustVideos } from '../content/site'
 
 export default function About() {
   return (
@@ -88,6 +89,28 @@ export default function About() {
               <div className="text-xs text-ink/50">{member.role}</div>
             </Reveal>
           ))}
+        </div>
+      </section>
+
+      {/* Referral program — Anthony (Jul 21): "if there's nothing in our referral
+          links, this type of video should be on there so people know how to refer." */}
+      <section className="border-y border-white/10 bg-panel py-20">
+        <div className="mx-auto grid max-w-wrap items-center gap-12 px-5 lg:grid-cols-2">
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">
+              Refer &amp; earn
+            </p>
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              The PowerSmith <span className="text-accent">referral program</span>
+            </h2>
+            <p className="mt-4 leading-relaxed text-white/65">
+              Know someone ready to go solar? See how the referral program works and how to get
+              started.
+            </p>
+          </Reveal>
+          <Reveal delay={150}>
+            <VideoEmbed videoId={trustVideos.referral.id} title={trustVideos.referral.title} />
+          </Reveal>
         </div>
       </section>
 

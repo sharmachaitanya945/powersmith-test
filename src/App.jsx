@@ -13,6 +13,8 @@ import FaqPage from './pages/FaqPage'
 import Contact from './pages/Contact'
 import CityLanding from './pages/CityLanding'
 import SolarCalculator from './pages/SolarCalculator'
+import BlogIndex from './pages/BlogIndex'
+import BlogPost from './pages/BlogPost'
 import { localBusinessSchema } from './content/site'
 
 function ScrollToTop() {
@@ -59,6 +61,8 @@ export default function App() {
           <Route path="/faq" element={<FaqPage />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/solar-calculator" element={<SolarCalculator />} />
+          <Route path="/blog" element={<BlogIndex />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/solar/:city" element={<CityLanding />} />
           <Route path="*" element={<Home />} />
         </Routes>
