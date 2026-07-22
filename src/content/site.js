@@ -375,7 +375,10 @@ export const partners = [
   { name: 'GoodLeap', logo: '/partners/goodleap.png' },
   { name: 'Sunlight Financial', logo: '/partners/sunlight.png' },
   { name: 'LightReach', logo: '/partners/lightreach.png' },
-  { name: 'Syngenic', logo: '/partners/syngenic.png' },
+  // Per Anthony (Jul 22): EnFin in, Syngenic out. Logo lives on the sales-rep
+  // portal partners page — renders as a text chip until the file lands at
+  // /partners/enfin.png.
+  { name: 'EnFin', logo: null },
 ]
 
 // Google reviews summary + real reviews from the live powersmithsolar.com site
