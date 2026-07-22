@@ -10,7 +10,9 @@ export default function PageHero({ title, highlight, subtitle, image, imageAlt, 
         className={`relative overflow-hidden text-center ${feature ? 'pb-28 pt-48' : 'pb-20 pt-40'}`}
       >
         <img src={image} alt={imageAlt || ''} className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/70 to-navy/85" />
+        {/* Neutral scrim (not a navy wash) so the photo shows true colour while the
+            heading stays legible — Anthony asked to drop the blue shade on hero images. */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/25 to-black/55" />
         <div className={`relative z-10 mx-auto px-5 ${feature ? 'max-w-4xl' : 'max-w-3xl'}`}>
           <h1
             className={`font-bold leading-[1.08] tracking-tight text-white ${

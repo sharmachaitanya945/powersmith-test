@@ -88,27 +88,26 @@ export const whoWhatHow = [
   },
 ]
 
-// Headline taglines. Brief (Anthony, Jul 21): the main line must cover home AND
-// business, and must avoid "own" — plenty of systems are leased. His steer was
-// "control your energy" / "freedom from". Swap `hero` to any alternative below and
-// the homepage headline follows.
+// Headline taglines. Per Anthony/Ben Hur (Jul 22): avoid "own" (leases) and
+// "control" (too common); keep it classy and cover home AND business. "Powering
+// Tomorrow, Today." is PowerSmith's established brand line — it's on the org chart
+// and all collateral — so it leads. Swap `hero` to any alternative below and the
+// homepage headline follows.
 //
-// Alternatives for review:
-//   1. Power Your Home or Business.  /  Take Control of Your Energy.   ← current
-//   2. Take Control of Your Energy.  /  Home. Business. Powered.
-//   3. Energy Freedom  /  For Every Home & Business.
-//   4. Powering Homes & Businesses.  /  Freedom From Rising Rates.
-//   5. Your Energy.  /  Your Control.
-//   6. Stop Renting Your Power.  /  Start Controlling It.
-//
-// Commercial alternatives:
-//   1. Power Your Business.  /  Cut Your Operating Costs.   ← current
-//   2. Power Your Business.  /  Control Your Overhead.
-//   3. Energy That Works  /  As Hard As You Do.
-//   4. Your Biggest Fixed Cost.  /  Now Under Your Control.
+// Hero alternatives for review:
+//   1. Powering Tomorrow, Today.     / For every home & business.   ← live
+//   2. Energy Made Simple.           / Solar & storage for home & business.
+//   3. Clean Energy, Built to Last.  / For homes and businesses across California.
+//   4. Freedom From Rising Rates.    / Solar for home & business.
+//   5. Your Power, Made Independent. / Solar, storage & EV for home & business.
+//   6. Powering the Way Forward.     / Home & business energy, done right.
 export const taglines = {
-  hero: { lead: 'Power Your Home or Business.', accent: 'Take Control of Your Energy.' },
-  // Retired main tagline — reused on the Residential page.
+  hero: {
+    lead: 'Powering Tomorrow,',
+    accent: 'Today.',
+    sub: 'Solar, storage & EV for every home & business.',
+  },
+  // Reused on the Residential page.
   residential: { lead: 'Power Your Home.', accent: 'Own Your Energy.' },
   commercial: { lead: 'Power Your Business.', accent: 'Cut Your Operating Costs.' },
 }

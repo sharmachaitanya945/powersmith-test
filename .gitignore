@@ -25,3 +25,6 @@ hero-src/
 partner-src/
 orig.html
 badge-src/
+
+# Business PDFs Chash drops in (org charts, proposals, etc.) — never shipped
+pdfs/

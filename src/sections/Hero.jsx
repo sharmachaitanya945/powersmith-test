@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { company, hero, taglines } from '../content/site'
+import { hero, taglines } from '../content/site'
 import veteranFlag from '../assets/veteran-flag.png'
 
 // Cinematic hero: a left-aligned message that slides in from the left over a
@@ -61,16 +61,14 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-transparent" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/25" />
 
-      {/* Veteran-owned flag — large watermark on the right. It sits on a navy
-          plate because the star and stripe gaps are knockouts: over a busy photo
-          they'd show the image through and read muddy. */}
-      <div className="pointer-events-none absolute right-5 top-1/2 z-[5] hidden -translate-y-1/2 rounded-2xl bg-navy/60 p-5 shadow-2xl shadow-black/40 ring-1 ring-white/10 backdrop-blur-sm sm:block lg:right-12">
-        <img
-          src={veteranFlag}
-          alt="Veteran Owned & Operated"
-          className="w-40 sm:w-48 lg:w-60 xl:w-64"
-        />
-      </div>
+      {/* Veteran-owned flag — small, top-right corner, transparent background.
+          A strong drop-shadow keeps the knockout star/stripes legible over the
+          dark upper-right sky of the hero images. */}
+      <img
+        src={veteranFlag}
+        alt="Veteran Owned & Operated"
+        className="pointer-events-none absolute right-5 top-28 z-[6] hidden w-36 drop-shadow-[0_4px_18px_rgba(0,0,0,0.75)] sm:top-32 sm:block sm:w-40 lg:right-10 lg:w-44"
+      />
 
       {/* Content — left aligned, staggered slide-in */}
       <div className="relative z-10 mx-auto w-full max-w-wrap px-5">
@@ -83,19 +81,17 @@ export default function Hero() {
           </p>
 
           <h1
-            className="hero-in mt-5 text-[2.1rem] font-bold leading-[1.08] tracking-tight text-white sm:text-[2.7rem] md:text-[3rem] lg:text-[3.4rem]"
+            className="hero-in mt-5 text-[2.4rem] font-bold leading-[1.05] tracking-tight text-white sm:text-[3.1rem] md:text-[3.6rem] lg:text-[4rem]"
             style={{ animationDelay: '0.18s' }}
           >
-            {taglines.hero.lead}
-            <br />
-            <span className="text-accent">{taglines.hero.accent}</span>
+            {taglines.hero.lead} <span className="text-accent">{taglines.hero.accent}</span>
           </h1>
 
           <p
-            className="hero-in mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg"
+            className="hero-in mt-5 max-w-xl text-lg font-medium text-white/85 sm:text-xl"
             style={{ animationDelay: '0.32s' }}
           >
-            {company.subline}
+            {taglines.hero.sub}
           </p>
 
           <div
