@@ -39,37 +39,38 @@ export default function Navbar() {
           of "FAQ" colliding with Portal Login: the row simply had nowhere to
           grow even on a wide screen. */}
       <div
-        className={`mx-auto flex max-w-[100rem] items-center justify-between gap-3 rounded-full border border-black/5 bg-white/85 px-4 py-3 ring-1 ring-black/5 backdrop-blur-xl transition-shadow duration-300 dark:border-white/20 dark:bg-navy/95 sm:px-5 ${
+        className={`mx-auto flex max-w-[100rem] items-center gap-3 rounded-full border border-black/5 bg-white/85 px-4 py-3 ring-1 ring-black/5 backdrop-blur-xl transition-shadow duration-300 dark:border-white/20 dark:bg-navy/95 sm:px-5 ${
           scrolled
             ? 'shadow-2xl shadow-black/15 dark:shadow-black/50'
             : 'shadow-lg shadow-black/10 dark:shadow-black/40'
         }`}
       >
-        {/* LEFT — logo (mark + wordmark, no flag) + nav, shifted left */}
-        <div className="flex items-center gap-5 2xl:gap-9">
-          <Link to="/" onClick={() => setOpen(false)} className="shrink-0">
-            <img src={logoNavy} alt="PowerSmith" className="h-7 w-auto dark:hidden sm:h-8" />
-            <img src={logoWhite} alt="PowerSmith" className="hidden h-7 w-auto dark:block sm:h-8" />
-          </Link>
+        {/* LEFT — logo only, pinned to the edge */}
+        <Link to="/" onClick={() => setOpen(false)} className="shrink-0">
+          <img src={logoNavy} alt="PowerSmith" className="h-7 w-auto dark:hidden sm:h-8" />
+          <img src={logoWhite} alt="PowerSmith" className="hidden h-7 w-auto dark:block sm:h-8" />
+        </Link>
 
-          <nav className="hidden items-center gap-5 2xl:flex">
-            {nav.map((item) => (
-              <NavLink key={item.to} to={item.to} className={navLinkClass}>
-                {item.label}
-              </NavLink>
-            ))}
-          </nav>
-        </div>
+        {/* CENTER — nav links get the whole middle span (flex-1) and center
+            within it with a wide gap, instead of clustering next to the logo
+            and leaving the middle of the wide pill empty. */}
+        <nav className="hidden flex-1 items-center justify-center gap-7 2xl:flex">
+          {nav.map((item) => (
+            <NavLink key={item.to} to={item.to} className={navLinkClass}>
+              {item.label}
+            </NavLink>
+          ))}
+        </nav>
 
-        {/* RIGHT — actions, then the veteran flag beside the theme toggle.
-            No "Get a Quote" pill here — Portal Login (solid orange, the
-            primary action now) and Rep Portal spread out to fill the space.
-            Everything in this row shares the SAME breakpoint (2xl) as the nav
-            links and the hamburger below — mismatched breakpoints (nav at xl,
-            portals at lg) were letting both show together and overlap before
-            the row had room, e.g. "FAQ" colliding with the Portal Login pill
-            around 1440px. One shared breakpoint means there's no in-between
-            width where that can happen again. */}
+        {/* RIGHT — actions, pinned to the edge. No "Get a Quote" pill here —
+            Portal Login (solid orange, the primary action now) and Rep Portal
+            spread out to fill the space. Everything in this row shares the
+            SAME breakpoint (2xl) as the nav links and the hamburger below —
+            mismatched breakpoints (nav at xl, portals at lg) were letting
+            both show together and overlap before the row had room, e.g. "FAQ"
+            colliding with the Portal Login pill around 1440px. One shared
+            breakpoint means there's no in-between width where that can
+            happen again. */}
         <div className="flex shrink-0 items-center gap-4">
           <a
             href={PORTAL_LOGIN}
