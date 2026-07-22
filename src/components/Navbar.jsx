@@ -33,21 +33,26 @@ export default function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
+      {/* The floating pill gets its own, wider max-width — it doesn't need to
+          match the 76rem body-content column below it, and the bigger portal
+          buttons need the room. Capping it at max-w-wrap was the real cause
+          of "FAQ" colliding with Portal Login: the row simply had nowhere to
+          grow even on a wide screen. */}
       <div
-        className={`mx-auto flex max-w-wrap items-center justify-between gap-3 rounded-full border border-black/5 bg-white/85 px-4 py-3 ring-1 ring-black/5 backdrop-blur-xl transition-shadow duration-300 dark:border-white/20 dark:bg-navy/95 sm:px-5 ${
+        className={`mx-auto flex max-w-[100rem] items-center justify-between gap-3 rounded-full border border-black/5 bg-white/85 px-4 py-3 ring-1 ring-black/5 backdrop-blur-xl transition-shadow duration-300 dark:border-white/20 dark:bg-navy/95 sm:px-5 ${
           scrolled
             ? 'shadow-2xl shadow-black/15 dark:shadow-black/50'
             : 'shadow-lg shadow-black/10 dark:shadow-black/40'
         }`}
       >
         {/* LEFT — logo (mark + wordmark, no flag) + nav, shifted left */}
-        <div className="flex items-center gap-4 xl:gap-7">
+        <div className="flex items-center gap-5 2xl:gap-9">
           <Link to="/" onClick={() => setOpen(false)} className="shrink-0">
             <img src={logoNavy} alt="PowerSmith" className="h-7 w-auto dark:hidden sm:h-8" />
             <img src={logoWhite} alt="PowerSmith" className="hidden h-7 w-auto dark:block sm:h-8" />
           </Link>
 
-          <nav className="hidden items-center gap-4 xl:flex">
+          <nav className="hidden items-center gap-5 2xl:flex">
             {nav.map((item) => (
               <NavLink key={item.to} to={item.to} className={navLinkClass}>
                 {item.label}
@@ -57,14 +62,20 @@ export default function Navbar() {
         </div>
 
         {/* RIGHT — actions, then the veteran flag beside the theme toggle.
-            No "Get a Quote" pill here — every nav link and portal button
-            already gets more breathing room without it (per Chash, Jul 23). */}
-        <div className="flex shrink-0 items-center gap-3">
+            No "Get a Quote" pill here — Portal Login (solid orange, the
+            primary action now) and Rep Portal spread out to fill the space.
+            Everything in this row shares the SAME breakpoint (2xl) as the nav
+            links and the hamburger below — mismatched breakpoints (nav at xl,
+            portals at lg) were letting both show together and overlap before
+            the row had room, e.g. "FAQ" colliding with the Portal Login pill
+            around 1440px. One shared breakpoint means there's no in-between
+            width where that can happen again. */}
+        <div className="flex shrink-0 items-center gap-4">
           <a
             href={PORTAL_LOGIN}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden whitespace-nowrap rounded-full border border-line/25 px-4 py-2 text-sm font-semibold text-heading transition hover:border-accent hover:text-accent dark:border-white/30 dark:text-white dark:hover:border-white dark:hover:bg-white/10 lg:inline-flex"
+            className="btn-primary hidden whitespace-nowrap px-6 py-3 text-base 2xl:inline-flex"
           >
             Portal Login
           </a>
@@ -72,7 +83,7 @@ export default function Navbar() {
             href={SALES_PORTAL}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden whitespace-nowrap rounded-full border border-line/25 px-4 py-2 text-sm font-semibold text-heading transition hover:border-accent hover:text-accent dark:border-white/30 dark:text-white dark:hover:border-white dark:hover:bg-white/10 lg:inline-flex"
+            className="hidden whitespace-nowrap rounded-full border-2 border-line/25 px-6 py-3 text-base font-semibold text-heading transition hover:border-accent hover:text-accent dark:border-white/30 dark:text-white dark:hover:border-white dark:hover:bg-white/10 2xl:inline-flex"
           >
             Rep Portal
           </a>
@@ -80,7 +91,7 @@ export default function Navbar() {
           <ThemeToggle />
 
           <button
-            className="flex flex-col gap-1.5 p-2 xl:hidden"
+            className="flex flex-col gap-1.5 p-2 2xl:hidden"
             onClick={() => setOpen(!open)}
             aria-label="Toggle menu"
             aria-expanded={open}
@@ -93,7 +104,7 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <nav className="mx-auto mt-2 max-w-wrap rounded-3xl border border-black/5 bg-white/95 px-5 pb-6 pt-3 shadow-2xl shadow-black/10 backdrop-blur dark:border-white/10 dark:bg-navy/95 dark:shadow-navy/30 xl:hidden">
+        <nav className="mx-auto mt-2 max-w-wrap rounded-3xl border border-black/5 bg-white/95 px-5 pb-6 pt-3 shadow-2xl shadow-black/10 backdrop-blur dark:border-white/10 dark:bg-navy/95 dark:shadow-navy/30 2xl:hidden">
           {nav.map((item) => (
             <NavLink
               key={item.to}
