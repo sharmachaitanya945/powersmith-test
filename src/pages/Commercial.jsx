@@ -213,6 +213,53 @@ export default function Commercial() {
         </div>
       </section>
 
+      {/* Real commercial project videos — sourced from powersmithsolar.com/commercial,
+          self-hosted here. Native <video> with visible controls, muted/looped like the
+          originals, so autoplay policy isn't an issue and there's no click-gate needed
+          for a pair of short (20-40s) project clips. */}
+      <section className="border-y border-line/10 bg-mist-50 py-20">
+        <div className="mx-auto max-w-wrap px-5">
+          <Reveal className="text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
+              Real projects, <span className="text-accent">in motion</span>
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-ink/65">
+              A look at commercial installs we've delivered — including the Pacific BMW solar carport.
+            </p>
+          </Reveal>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2">
+            <Reveal>
+              <video
+                src="/videos/commercial-fontana.mp4"
+                controls
+                loop
+                muted
+                preload="metadata"
+                playsInline
+                className="aspect-video w-full rounded-2xl border border-line/10 bg-carbon object-cover shadow-xl shadow-navy/10"
+              >
+                Your browser does not support the video tag.
+              </video>
+              <p className="mt-3 text-center text-sm text-ink/55">Commercial Project — Fontana, CA</p>
+            </Reveal>
+            <Reveal delay={120}>
+              <video
+                src="/videos/commercial-bmw-glendale.mp4"
+                controls
+                loop
+                muted
+                preload="metadata"
+                playsInline
+                className="aspect-video w-full rounded-2xl border border-line/10 bg-carbon object-cover shadow-xl shadow-navy/10"
+              >
+                Your browser does not support the video tag.
+              </video>
+              <p className="mt-3 text-center text-sm text-ink/55">Pacific BMW Solar Carport — Glendale, CA</p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       {/* Core competencies — what we bring to a commercial project */}
       <section className="border-y border-white/10 bg-panel py-20">
         <div className="mx-auto max-w-wrap px-5">

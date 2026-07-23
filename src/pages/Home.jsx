@@ -7,6 +7,7 @@ import Partners from '../sections/Partners'
 import Highlights from '../sections/Highlights'
 import Services from '../sections/Services'
 import Gallery from '../sections/Gallery'
+import RecentProjects from '../sections/RecentProjects'
 import Savings from '../sections/Savings'
 import Testimonials from '../sections/Testimonials'
 import ServiceArea from '../sections/ServiceArea'
@@ -28,6 +29,9 @@ export default function Home() {
       <Highlights />
       <Services />
       <Gallery />
+      <RecentProjects
+        intro="Real installs, real cities, real system sizes — a sample of recent residential work across Southern California."
+      />
       <Savings />
       <Testimonials />
       <ServiceArea />

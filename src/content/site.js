@@ -127,7 +127,11 @@ export const taglines = {
   hero: {
     lead: 'Powering Tomorrow,',
     accent: 'Today.',
-    sub: 'Solar, storage & EV for every home & business.',
+    // Jul 23: Anthony wants this framed as "leading the renewable energy
+    // transition," closing explicitly on homes AND businesses (repeated twice
+    // on the call) — the one hard requirement from an otherwise-hard-to-parse
+    // description of a mockup that doesn't match what's actually live.
+    sub: 'Leading the renewable energy transition with solar, storage and EV charging — for homes and businesses.',
   },
   // Reused on the Residential page.
   residential: { lead: 'Power Your Home.', accent: 'Own Your Energy.' },
@@ -164,13 +168,15 @@ export const beforeYouGo = [
 ]
 
 // Completed residential systems — size + city, which Anthony asked for so the
-// work is identifiable. Taken from "Most Recent Projects" on the live site.
+// work is identifiable. Photos + captions pulled from "Most Recent Projects"
+// on the live site — real projects, not stock/generic drone shots. Shared by
+// the Residential page and the homepage (Chash, Jul 24).
 export const residentialProjects = [
-  { city: 'Canyon Lake', size: '9 kW' },
-  { city: 'Laguna', size: '13.6 kW' },
-  { city: 'Redlands', size: '12 kW' },
-  { city: 'Riverside', size: '6 kW' },
-  { city: 'Temecula', size: '12 kW' },
+  { city: 'Canyon Lake', size: '9 kW', image: '/projects/canyon-lake.webp' },
+  { city: 'Laguna', size: '13.6 kW', image: '/projects/laguna.webp' },
+  { city: 'Redlands', size: '12 kW', image: '/projects/redlands.webp' },
+  { city: 'Riverside', size: '6 kW', image: '/projects/riverside.webp' },
+  { city: 'Temecula', size: '12 kW', image: '/projects/temecula.webp' },
 ]
 
 // "What is Solar Insure?" — Anthony wants the warranty explained on the

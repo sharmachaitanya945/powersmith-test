@@ -33,13 +33,12 @@ export default function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
-      {/* The floating pill gets its own, wider max-width — it doesn't need to
-          match the 76rem body-content column below it, and the bigger portal
-          buttons need the room. Capping it at max-w-wrap was the real cause
-          of "FAQ" colliding with Portal Login: the row simply had nowhere to
-          grow even on a wide screen. */}
+      {/* The pill shares max-w-wrap with every section below it (widened to
+          92rem in tailwind.config.js) — per Anthony (Jul 23), the navbar and
+          the page content must line up edge-to-edge, not use two different
+          widths. Using the same token means they can't drift apart again. */}
       <div
-        className={`mx-auto flex max-w-[100rem] items-center gap-3 rounded-full border border-black/5 bg-white/85 px-4 py-3 ring-1 ring-black/5 backdrop-blur-xl transition-shadow duration-300 dark:border-white/20 dark:bg-navy/95 sm:px-5 ${
+        className={`mx-auto flex max-w-wrap items-center gap-3 rounded-full border border-black/5 bg-white/85 px-4 py-3 ring-1 ring-black/5 backdrop-blur-xl transition-shadow duration-300 dark:border-white/20 dark:bg-navy/95 sm:px-5 ${
           scrolled
             ? 'shadow-2xl shadow-black/15 dark:shadow-black/50'
             : 'shadow-lg shadow-black/10 dark:shadow-black/40'

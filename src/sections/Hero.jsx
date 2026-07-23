@@ -73,12 +73,12 @@ export default function Hero() {
       {/* Content — left aligned, staggered slide-in */}
       <div className="relative z-10 mx-auto w-full max-w-wrap px-5">
         <div className="max-w-4xl text-left [text-shadow:0_2px_20px_rgba(0,0,0,0.55)]">
-          <p
-            className="hero-in text-sm font-bold uppercase tracking-[0.28em] text-white/90 sm:text-base"
-            style={{ animationDelay: '0.05s' }}
-          >
-            PowerSmith <span className="text-accent">Energy</span>
-          </p>
+          <div className="hero-in flex items-center gap-3" style={{ animationDelay: '0.05s' }}>
+            <span className="h-[2px] w-8 rounded-full bg-accent" aria-hidden="true" />
+            <p className="text-sm font-bold uppercase tracking-[0.28em] text-white/90 sm:text-base">
+              PowerSmith <span className="text-accent">Energy</span>
+            </p>
+          </div>
 
           <h1
             className="hero-in mt-5 text-[2.4rem] font-bold leading-[1.05] tracking-tight text-white sm:text-[3.1rem] md:text-[3.6rem] lg:text-[4rem]"

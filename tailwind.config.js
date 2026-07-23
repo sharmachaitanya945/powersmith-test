@@ -37,7 +37,13 @@ export default {
         display: ['"Avenir Next"', 'Avenir', 'Montserrat', 'system-ui', 'sans-serif'],
       },
       maxWidth: {
-        wrap: '76rem',
+        // Shared column width for the navbar pill AND every section below it,
+        // so their left/right edges line up down the page (Anthony, Jul 23:
+        // "the margins should line up... these margins are going to be the
+        // margins you're going to use for everything else"). Widened from
+        // 76rem so the navbar (which needed the room for bigger portal
+        // buttons) doesn't have to be narrower than the content it sits above.
+        wrap: '92rem',
       },
     },
   },

@@ -7,7 +7,7 @@ import Reveal from '../components/Reveal'
 const shots = [
   { src: '/dji/install-1.webp', alt: 'Black-panel solar on a single-family California home' },
   { src: '/dji/install-2.webp', alt: 'Rooftop solar and pool — PowerSmith residential install' },
-  { src: '/dji/install-3.webp', alt: 'Two-story Southern California home with rooftop solar' },
+  { src: '/dji/dji-golf-course.webp', alt: 'Spanish-tile home with rooftop solar beside a California golf course' },
   { src: '/dji/install-4.webp', alt: 'Large solar array on a pool home, aerial view' },
   { src: '/dji/install-5.webp', alt: 'Solar installed across multiple homes in a community' },
   { src: '/dji/install-6.webp', alt: 'Estate-scale solar system on a California property' },

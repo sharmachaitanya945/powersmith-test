@@ -7,7 +7,6 @@ import {
   residentialServices,
   residentialWhy,
   beforeYouGo,
-  residentialProjects,
   residentialFamily,
   batteries,
   solarInsure,
@@ -19,6 +18,7 @@ import Services from '../sections/Services'
 import Savings from '../sections/Savings'
 import HowItWorks from '../sections/HowItWorks'
 import Comparison from '../sections/Comparison'
+import RecentProjects from '../sections/RecentProjects'
 import Gallery from '../sections/Gallery'
 import Faq from '../sections/Faq'
 import LeadForm from '../sections/LeadForm'
@@ -233,29 +233,7 @@ export default function Residential() {
         </div>
       </section>
 
-      {/* Recent residential systems — size + city, so the work is identifiable */}
-      <section className="border-y border-line/10 bg-mist-50 py-20">
-        <div className="mx-auto max-w-wrap px-5">
-          <Reveal className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Recent <span className="text-accent">projects</span>
-            </h2>
-            <p className="mx-auto mt-3 max-w-xl text-ink/65">
-              A sample of recently completed residential systems across Southern California.
-            </p>
-          </Reveal>
-          <div className="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5">
-            {residentialProjects.map((p, i) => (
-              <Reveal key={p.city} delay={(i % 5) * 80}>
-                <div className="rounded-2xl border border-line/10 bg-card p-6 text-center shadow-sm">
-                  <div className="text-2xl font-extrabold text-accent">{p.size}</div>
-                  <div className="mt-1 text-sm font-medium text-heading">{p.city}</div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <RecentProjects />
 
       <Gallery />
       <Faq />

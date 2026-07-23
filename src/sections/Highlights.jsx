@@ -2,9 +2,10 @@ import Reveal from '../components/Reveal'
 import VideoEmbed from '../components/VideoEmbed'
 import { highlights } from '../content/site'
 
-// Per Anthony (Jul 21): "save your electricity" copy on the left with the video
-// on the right, in one frame — "you don't need two." So the benefits and the
-// explainer video now share a single section instead of stacking.
+// Per Anthony (Jul 23): the heading + video are "two different scenarios" from
+// the 3 benefit boxes — the video pairs with the heading/intro up top (bigger),
+// and the 3 benefits become their own row of cards below, not a vertical list
+// stacked under the copy.
 const VIDEO_ID = 'igdxnIdQIYs'
 
 // Compact line icons, one per benefit (matched by index).
@@ -29,36 +30,38 @@ const icons = [
 export default function Highlights() {
   return (
     <section className="mx-auto max-w-wrap px-5 py-24">
+      {/* Top — heading/intro paired with the video, given the visual weight */}
       <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        {/* Left — the savings story */}
         <Reveal>
           <h2 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-[2.75rem]">
             {highlights.heading}
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-ink/70">{highlights.intro}</p>
-
-          <ul className="mt-9 space-y-6">
-            {highlights.items.map((item, i) => (
-              <li key={item.title} className="flex gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
-                  <span className="block h-5 w-5">{icons[i]}</span>
-                </span>
-                <div>
-                  <h3 className="text-base font-bold">{item.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-ink/70">{item.text}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
         </Reveal>
 
-        {/* Right — the explainer video */}
         <Reveal delay={150}>
           <VideoEmbed videoId={VIDEO_ID} title="PowerSmith Energy — How solar works" />
           <p className="mt-4 text-center text-sm text-ink/55">
             See how going solar with PowerSmith works — from your first bill to power-on.
           </p>
         </Reveal>
+      </div>
+
+      {/* Bottom — the 3 benefits as their own row of cards */}
+      <div className="mt-16 grid gap-6 md:grid-cols-3">
+        {highlights.items.map((item, i) => (
+          <Reveal key={item.title} delay={i * 120}>
+            <div className="flex h-full flex-col rounded-3xl border border-line/10 bg-card p-8 shadow-sm transition hover:border-accent/40 hover:shadow-lg hover:shadow-navy/5 sm:p-9">
+              <div className="flex items-center gap-4">
+                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-accent/10 text-accent">
+                  <span className="block h-7 w-7">{icons[i]}</span>
+                </span>
+                <h3 className="text-xl font-bold leading-tight">{item.title}</h3>
+              </div>
+              <p className="mt-5 leading-relaxed text-ink/75">{item.text}</p>
+            </div>
+          </Reveal>
+        ))}
       </div>
     </section>
   )
